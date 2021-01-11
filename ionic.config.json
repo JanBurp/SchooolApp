@@ -1,0 +1,7 @@
+{
+  "name": "Schoool",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
