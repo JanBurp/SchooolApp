@@ -1,28 +1,80 @@
 <template>
-  <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Titel</ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <ion-app>
+    <ion-router>
+      <ion-route url="/home" component="page-home"></ion-route>
+      <ion-route url="/actueel" component="page-actueel"></ion-route>
+      <ion-route url="/blogs" component="page-blogs"  :beforeEnter="isLoggedInGuard" :beforeLeave="hasUnsavedDataGuard"></ion-route>
+      <ion-route url="/kalender" component="page-kalender"></ion-route>
+      <ion-route url="/fotos" component="page-fotos"></ion-route>
+      <ion-route url="/profiel" component="page-profiel"></ion-route>
+    </ion-router>
 
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
+
+    <ion-menu side="start" content-id="main-content">
+      <ion-header>
+        <ion-toolbar translucent>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="home" slot="start"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="actueel" slot="start"></ion-icon>
+            <ion-label>Actueel</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="blogs" slot="start"></ion-icon>
+            <ion-label>Groepsblogs</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="kalender" slot="start"></ion-icon>
+            <ion-label>Kalender</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="fotos" slot="start"></ion-icon>
+            <ion-label>Fotos</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="profiel" slot="start"></ion-icon>
+            <ion-label>Profiel</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+      <ion-header>
         <ion-toolbar>
-          <ion-title size="large">Titel</ion-title>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>{{title}}</ion-title>
         </ion-toolbar>
       </ion-header>
 
-      <div id="container">
-        <strong>Schoool</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
-    </ion-content>
-  </ion-page>
+      <ion-router-outlet></ion-router-outlet>
+
+    </div>
+  </ion-app>
 </template>
 
-<script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+
+
+<script>
+import {
+  IonContent,
+  IonHeader,
+  IonItem,
+  IonList,
+  IonMenu,
+  IonTitle,
+  IonToolbar,
+  menuController,
+} from '@ionic/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -30,10 +82,25 @@ export default defineComponent({
   components: {
     IonContent,
     IonHeader,
-    IonPage,
+    IonItem,
+    IonList,
+    IonMenu,
     IonTitle,
     IonToolbar
-  }
+  },
+
+  data: function() {
+    return {
+      title : 'Menu',
+
+    };
+  },
+
+  methods: {
+    openMenu() {
+      menuController.open();
+    },
+  },
 });
 </script>
 
