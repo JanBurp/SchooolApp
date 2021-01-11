@@ -1,18 +1,51 @@
 <template>
   <ion-app>
+    <ion-menu side="start" content-id="main-content">
+      <ion-header>
+        <ion-toolbar translucent>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="home" slot="start"></ion-icon>
+            <ion-label><ion-router-link href="/home">Home</ion-router-link></ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="actueel" slot="start"></ion-icon>
+            <ion-label><ion-router-link href="/actueel">Actueel</ion-router-link></ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="blogs" slot="start"></ion-icon>
+            <ion-label><ion-router-link href="/blogs">Groepsblogs</ion-router-link></ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="kalender" slot="start"></ion-icon>
+            <ion-label><ion-router-link href="/kalender">Kalender</ion-router-link></ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="fotos" slot="start"></ion-icon>
+            <ion-label><ion-router-link href="/fotos">Fotos</ion-router-link></ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="profiel" slot="start"></ion-icon>
+            <ion-label><ion-router-link href="/profiel">Profiel</ion-router-link></ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
     <ion-router-outlet />
   </ion-app>
 </template>
 
 <script>
-import { IonApp, IonRouterOutlet } from '@ionic/vue';
+import { IonApp, IonRouterOutlet, IonContent, IonItem, IonList, IonMenu, } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'App',
-  components: {
-    IonApp,
-    IonRouterOutlet
-  }
+  components: { IonApp, IonRouterOutlet, IonContent, IonItem, IonList, IonMenu }
 });
 </script>
