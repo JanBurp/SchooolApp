@@ -32,6 +32,22 @@
             <ion-icon name="profiel" slot="start"></ion-icon>
             <ion-label><ion-router-link href="/profiel">Profiel</ion-router-link></ion-label>
           </ion-item>
+          <ion-item>
+            <ion-menu-toggle>
+                <ion-item>
+                  <ion-icon name="nieuwsbrief" slot="start"></ion-icon>
+                  <ion-label><ion-router-link href="/profiel/nieuwsbrief">Nieuwsbrief Instellingen</ion-router-link></ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-icon name="privacy" slot="start"></ion-icon>
+                  <ion-label><ion-router-link href="/profiel/privacy">Privacy Instellingen</ion-router-link></ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-icon name="adres" slot="start"></ion-icon>
+                  <ion-label><ion-router-link href="/profiel/adres">Adresgegevens</ion-router-link></ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>
