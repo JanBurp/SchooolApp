@@ -14,15 +14,12 @@
 
 
 <script>
-import { IonHeader, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonHeader, IonMenuButton, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Home',
-  components: { IonHeader, IonTitle, IonToolbar },
-
-  data: function() {
-  },
+  components: { IonHeader, IonMenuButton, IonTitle, IonToolbar },
 });
 </script>
 

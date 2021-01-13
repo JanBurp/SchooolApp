@@ -1,0 +1,31 @@
+/* Schoool App Variables and Theming. */
+
+:root{
+
+  /* App specific */
+  --app-color-rood: #BA141F;
+  --app-color-blauw: #17B1D3;
+  --app-color-grijs: #3B3E49;
+  --app-color-geel: #F6BE2F;
+
+
+  /* Ionic overrides */
+  --ion-toolbar-background: #3B3E49;
+}
+
+.app-color-rood { color: var(--app-color-rood)}
+.app-color-blauw { color: var(--app-color-blauw)}
+.app-color-grijs { color: var(--app-color-grijs)}
+.app-color-geel { color: var(--app-color-geel)}
+
+.app-background-color-rood { background-color: var(--app-color-rood)}
+.app-background-color-blauw { background-color: var(--app-color-blauw)}
+.app-background-color-grijs { background-color: var(--app-color-grijs)}
+.app-background-color-geel { background-color: var(--app-color-geel)}
+
+
+
+/* Ionic overrides */
+ion-title, ion-menu-button {
+  color:#FFF;
+}
