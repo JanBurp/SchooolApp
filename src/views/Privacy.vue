@@ -9,9 +9,10 @@
       </ion-toolbar>
     </ion-header>
   </div>
+  <ion-content>
+    <schoool-nocontent></schoool-nocontent>
+  </ion-content>
 </template>
-
-
 
 <script>
 import { defineComponent } from 'vue';

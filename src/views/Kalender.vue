@@ -8,6 +8,9 @@
         <ion-title>Kalender</ion-title>
       </ion-toolbar>
     </ion-header>
+    <ion-content>
+      <schoool-nocontent></schoool-nocontent>
+    </ion-content>
   </div>
 </template>
 
