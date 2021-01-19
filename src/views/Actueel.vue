@@ -8,6 +8,10 @@
         <ion-title>Actueel</ion-title>
       </ion-toolbar>
     </ion-header>
+    <ion-content>
+      <h1>Actueel</h1>
+      <schoool-icon name="actueel" class="app-color-blauw"></schoool-icon>
+    </ion-content>
   </div>
 </template>
 

@@ -10,7 +10,8 @@
 
 
   /* Ionic overrides */
-  --ion-toolbar-background: #3B3E49;
+  --ion-color-primary: var(--app-color-blauw);
+  --ion-toolbar-background: var(--app-color-grijs);
 }
 
 .app-color-rood { color: var(--app-color-rood)}
@@ -30,9 +31,23 @@ ion-title, ion-menu-button {
   color:#FFF;
 }
 
+ion-menu-button {
+  /*width:50px;*/
+}
+
 ion-menu {
-  --top:44px;
+  top:44px;
   --width:100%;
 }
 
+ion-menu ion-label {
+  text-align:center;
+}
+
+ion-menu ion-item {
+  --padding-start:0;
+}
+ion-menu ion-item .schoool-icon {
+  margin-left:.5rem;
+}
 

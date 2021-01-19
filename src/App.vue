@@ -3,30 +3,30 @@
     <ion-menu side="start" content-id="main-content">
       <ion-list>
         <ion-item>
-          <ion-icon name="home-outline" slot="start"></ion-icon>
+          <schoool-icon name="home" class="app-color-blauw"></schoool-icon>
           <ion-label><ion-router-link href="/home">Home</ion-router-link></ion-label>
         </ion-item>
         <ion-item>
-          <ion-icon name="actueel" slot="start"></ion-icon>
+          <schoool-icon name="actueel" class="app-color-blauw"></schoool-icon>
           <ion-label><ion-router-link href="/actueel">Actueel</ion-router-link></ion-label>
         </ion-item>
         <ion-item>
-          <ion-icon name="blogs" slot="start"></ion-icon>
+          <schoool-icon name="blog" class="app-color-blauw"></schoool-icon>
           <ion-label><ion-router-link href="/blogs">Groepsblogs</ion-router-link></ion-label>
         </ion-item>
         <ion-item>
-          <ion-icon name="kalender" slot="start"></ion-icon>
+          <schoool-icon name="kalender" class="app-color-blauw"></schoool-icon>
           <ion-label><ion-router-link href="/kalender">Kalender</ion-router-link></ion-label>
         </ion-item>
         <ion-item>
-          <ion-icon name="fotos" slot="start"></ion-icon>
+          <schoool-icon name="fotos" class="app-color-blauw"></schoool-icon>
           <ion-label><ion-router-link href="/fotos">Fotos</ion-router-link></ion-label>
         </ion-item>
         <ion-item>
-          <ion-icon name="profiel" slot="start"></ion-icon>
+          <schoool-icon name="profiel" class="app-color-blauw"></schoool-icon>
           <ion-label><ion-router-link href="/profiel">Profiel</ion-router-link></ion-label>
         </ion-item>
-        <ion-item>
+<!--         <ion-item>
           <ion-menu-toggle>
               <ion-item>
                 <ion-icon name="nieuwsbrief" slot="start"></ion-icon>
@@ -42,7 +42,7 @@
               </ion-item>
           </ion-menu-toggle>
         </ion-item>
-      </ion-list>
+ -->      </ion-list>
     </ion-menu>
 
     <ion-router-outlet></ion-router-outlet>

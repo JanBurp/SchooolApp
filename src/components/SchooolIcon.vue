@@ -7,7 +7,7 @@
     name: 'Icon',
 
     props: {
-      'type':{
+      'name':{
         type: String,
         default:'',
       },
@@ -39,42 +39,7 @@
       },
 
       iconClass : function() {
-        if (this.disabled) this.hover = false;
-        var c = '';
-        if (!this.isFontAwsome) {
-          c = 'g-icon g-icon-' + this.type + ' mmv-icon-shape-' + this.shape;
-        }
-        else {
-          c = 'fas ' + this.type + ' ' + this.shape;
-        }
-
-        if (this.shape=='round') c += '  btn-outline-primary';
-        if (this.disabled) {
-          c += ' disabled';
-        }
-        else {
-          if (this.shape!=='none') {
-            if (this.active)  c += ' btn-outline-primary';
-            if (this.hover)   c += ' btn-outline-primary text-white';
-          }
-        }
-        if (this.type=='delete' || this.type=='close') c += ' text-danger';
-
-        if (this.styling=='light') {
-          c += ' mmm-text-white';
-        }
-        else {
-          if($("body").hasClass('mijn-kringen')){
-            c += ' mmv-text-kringen_kleur';
-          }
-          if($("body").hasClass('mijn-zorg')){
-            c += ' mmv-text-zorgkleur';
-          }
-          if($("body").hasClass('onderzoekslab')){
-            c += ' mmv-text-lab_kleur';
-          }
-        }
-
+        let c = 'schoool-icon-'+this.name;
         return c;
       },
 
@@ -84,5 +49,7 @@
 </script>
 
 <style scoped>
-
+  .schoool-icon::before {
+    font-size: 2rem;
+  }
 </style>

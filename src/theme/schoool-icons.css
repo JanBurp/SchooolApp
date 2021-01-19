@@ -92,6 +92,9 @@
 .schoool-icon-klassen:before {
   content: "r";
 }
+.schoool-icon-blog:before {
+  content: "r";
+}
 .schoool-icon-leerlingen:before {
   content: "s";
 }
@@ -161,6 +164,9 @@
 .schoool-icon-nieuws:before {
   content: "O";
 }
+.schoool-icon-actueel:before {
+  content: "O";
+}
 .schoool-icon-pagina:before {
   content: "P";
 }
@@ -171,6 +177,9 @@
   content: "R";
 }
 .schoool-icon-profiel-neutraal:before {
+  content: "S";
+}
+.schoool-icon-profiel:before {
   content: "S";
 }
 .schoool-icon-f:before {
