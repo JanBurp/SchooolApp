@@ -1,0 +1,181 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "schoool-icons";
+  src:url("../assets/fonts/schoool-icons.eot");
+  src:url("../assets/fonts/schoool-icons.eot?#iefix") format("embedded-opentype"),
+    url("../assets/fonts/schoool-icons.woff") format("woff"),
+    url("../assets/fonts/schoool-icons.ttf") format("truetype"),
+    url("../assets/fonts/schoool-icons.svg#schoool-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "schoool-icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="schoool-icon-"]:before,
+[class*=" schoool-icon-"]:before {
+  font-family: "schoool-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.schoool-icon-automatisch:before {
+  content: "a";
+}
+.schoool-icon-backup-terugzetten:before {
+  content: "b";
+}
+.schoool-icon-bestand:before {
+  content: "c";
+}
+.schoool-icon-c-aangevinkt:before {
+  content: "d";
+}
+.schoool-icon-c-automatisch:before {
+  content: "e";
+}
+.schoool-icon-c-bewerken:before {
+  content: "f";
+}
+.schoool-icon-c-boven:before {
+  content: "g";
+}
+.schoool-icon-c-onder:before {
+  content: "h";
+}
+.schoool-icon-c-plus:before {
+  content: "i";
+}
+.schoool-icon-c-rechts:before {
+  content: "j";
+}
+.schoool-icon-c-rew:before {
+  content: "k";
+}
+.schoool-icon-c-schuiven:before {
+  content: "l";
+}
+.schoool-icon-c-tijd:before {
+  content: "m";
+}
+.schoool-icon-c-uitloggen:before {
+  content: "n";
+}
+.schoool-icon-home:before {
+  content: "o";
+}
+.schoool-icon-instellingen:before {
+  content: "p";
+}
+.schoool-icon-kalender:before {
+  content: "q";
+}
+.schoool-icon-klassen:before {
+  content: "r";
+}
+.schoool-icon-leerlingen:before {
+  content: "s";
+}
+.schoool-icon-link:before {
+  content: "t";
+}
+.schoool-icon-maak-backup:before {
+  content: "u";
+}
+.schoool-icon-rew:before {
+  content: "v";
+}
+.schoool-icon-stip-leeg:before {
+  content: "w";
+}
+.schoool-icon-stip-vol:before {
+  content: "x";
+}
+.schoool-icon-tekstpagina:before {
+  content: "y";
+}
+.schoool-icon-vlag:before {
+  content: "z";
+}
+.schoool-icon-zoeken:before {
+  content: "A";
+}
+.schoool-icon-c-ff:before {
+  content: "B";
+}
+.schoool-icon-c-hart:before {
+  content: "C";
+}
+.schoool-icon-c-informatie:before {
+  content: "D";
+}
+.schoool-icon-c-link:before {
+  content: "E";
+}
+.schoool-icon-c-links:before {
+  content: "F";
+}
+.schoool-icon-c-minus:before {
+  content: "G";
+}
+.schoool-icon-c-verwijderen:before {
+  content: "H";
+}
+.schoool-icon-c-zoeken:before {
+  content: "I";
+}
+.schoool-icon-download:before {
+  content: "J";
+}
+.schoool-icon-ff:before {
+  content: "K";
+}
+.schoool-icon-fotos:before {
+  content: "L";
+}
+.schoool-icon-hart:before {
+  content: "M";
+}
+.schoool-icon-melding:before {
+  content: "N";
+}
+.schoool-icon-nieuws:before {
+  content: "O";
+}
+.schoool-icon-pagina:before {
+  content: "P";
+}
+.schoool-icon-pijl-rechts:before {
+  content: "Q";
+}
+.schoool-icon-profiel-lach:before {
+  content: "R";
+}
+.schoool-icon-profiel-neutraal:before {
+  content: "S";
+}
+.schoool-icon-f:before {
+  content: "T";
+}
+.schoool-icon-r:before {
+  content: "U";
+}

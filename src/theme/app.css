@@ -29,3 +29,10 @@
 ion-title, ion-menu-button {
   color:#FFF;
 }
+
+ion-menu {
+  --top:44px;
+  --width:100%;
+}
+
+

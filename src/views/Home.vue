@@ -56,12 +56,9 @@
 
 
 <script>
-import { IonHeader, IonToolbar, IonButtons, IonGrid, IonRow, IonCol } from '@ionic/vue';
 import { defineComponent } from 'vue';
-
 export default defineComponent({
   name: 'Home',
-  components: { IonHeader, IonToolbar, IonButtons, IonGrid, IonRow, IonCol },
   data: function() {
     return {}
   },
