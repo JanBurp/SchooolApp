@@ -9,8 +9,8 @@
     </ion-header>
     <ion-grid class="app-home-item-grid">
       <ion-row>
-        <ion-col class="app-home-logo">
-          <img src="assets/img/schoool.svg" />
+        <ion-col>
+          <schoool-logo></schoool-logo>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -49,8 +49,15 @@
           </ion-col>
         </ion-router-link>
       </ion-row>
+      <ion-row>
+        <ion-col class="app-home-profiel">
+          <ion-router-link href="/profiel">
+            <schoool-icon name="profiel" class="app-color-blauw"></schoool-icon>
+            Profiel
+          </ion-router-link>
+        </ion-col>
+      </ion-row>
     </ion-grid>
-
   </div>
 </template>
 
@@ -72,9 +79,6 @@ export default defineComponent({
     width:1.5rem;
   }
 
-  .app-home-logo {
-    height: 10rem;
-  }
   .app-home-item {
     display: block;
     position: relative;
@@ -102,6 +106,15 @@ export default defineComponent({
     width: 100%;
     color:#FFF;
     text-align: center;
+  }
+
+  .app-home-profiel {
+    text-align:center;
+    width:auto;
+    position: absolute;
+    bottom:1rem;
+    left:50%;
+    transform: translateX(-50%);
   }
 
 </style>
