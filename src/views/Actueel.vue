@@ -9,28 +9,59 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <schoool-nocontent></schoool-nocontent>
+      <schoool-nocontent v-if="noItems"></schoool-nocontent>
+      <template v-else>
+        <ion-card class="schoool-card" v-for="item in items" :key="item.id">
+          <ion-card-header>
+            <ion-card-title>{{item.str_title}}</ion-card-title>
+            <schoool-item-category>{{item.type}}</schoool-item-category>
+            <schoool-item-date>{{item.dat_date}}</schoool-item-date>
+          </ion-card-header>
+          <ion-card-content>
+            <schoool-item-image v-if="hasImage(item)" :image="firstImage(item)"></schoool-item-image>
+            <schoool-item-text :text="item.txt_text"></schoool-item-text>
+          </ion-card-content>
+        </ion-card>
+      </template>
     </ion-content>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import { mapActions } from 'vuex';
+import { mapGetters,mapActions } from 'vuex';
 export default defineComponent({
   name: 'Actueel',
 
-
-
-  created() {
-    console.log('mounted');
+  data : function() {
+    return {
+    }
   },
 
+  created() {
+    this.loadData();
+  },
+
+  computed : {
+    ...mapGetters('actueel',{
+      noItems : 'noItems',
+      items : 'getItems',
+    }),
+  },
 
   methods: {
-    ...mapActions('actueel',[
-      'loadData',
-    ]),
+    ...mapActions('actueel',{
+      loadData: 'loadData',
+    }),
+
+    hasImage(item) {
+      return (item.carousel.length>0);
+    },
+
+    firstImage(item) {
+      return item.carousel[0];
+    },
+
   },
 
 

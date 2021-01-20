@@ -12,26 +12,13 @@ if (_.isUndefined(_)) {
 
 // Axios & API
 window.axios = require('axios');
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InRlc3Rkb2NlbnQiLCJwYXNzd29yZCI6IlRlc3REb2NlbnQxIn0.m-2EKJVppjJsq0lNKWQhvmTssH2fofH5b6dcDze9soQ';
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-    // $.ajaxSetup({
-    //     headers: {
-    //         'X-CSRF-TOKEN': token.content
-    //     }
-    // });
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
-
+window.axios.defaults.headers.common['Content-Type'] = 'application/json';
+// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InRlc3Rkb2NlbnQiLCJwYXNzd29yZCI6IlRlc3REb2NlbnQxIn0.m-2EKJVppjJsq0lNKWQhvmTssH2fofH5b6dcDze9soQ';
+// window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 
 window.Api = {
-  _request : {
-    base_url : 'http://develop_schoool.test/_api/',
-    method : 'GET',
-    url    : '',
-  },
+  base_url : 'http://develop_schoool.test/_api',
   get : function(url) {
     this._request = {
       url    : url,
@@ -77,7 +64,8 @@ window.Api = {
     return this.call(this._request);
   },
   call : function(request) {
-    request.url = this._request.base_url + request.url;
+    request.url = this.base_url + request.url;
+    request.crossdomain = true;
     request.transformResponse = function(data) {
       return JSON.parse(data,function (key, value) {
         // if (['startdate','enddate','start','dtstart','until','due_at'].indexOf(key)>=0) {

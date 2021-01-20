@@ -6,8 +6,8 @@
   --app-color-rood: #BA141F;
   --app-color-blauw: #17B1D3;
   --app-color-grijs: #3B3E49;
+  --app-color-lichtgrijs: #93979C;
   --app-color-geel: #F6BE2F;
-
 
   /* Ionic overrides */
   --ion-color-primary: var(--app-color-blauw);
@@ -17,16 +17,17 @@
 .app-color-rood { color: var(--app-color-rood)}
 .app-color-blauw { color: var(--app-color-blauw)}
 .app-color-grijs { color: var(--app-color-grijs)}
+.app-color-lichtgrijs { color: var(--app-color-lichtgrijs)}
 .app-color-geel { color: var(--app-color-geel)}
 
 .app-background-color-rood { background-color: var(--app-color-rood)}
 .app-background-color-blauw { background-color: var(--app-color-blauw)}
 .app-background-color-grijs { background-color: var(--app-color-grijs)}
+.app-background-color-lichtgrijs { background-color: var(--app-color-lichtgrijs)}
 .app-background-color-geel { background-color: var(--app-color-geel)}
 
-
-
 /* Ionic overrides */
+
 ion-title, ion-menu-button {
   color:#FFF;
 }
@@ -39,11 +40,9 @@ ion-menu {
   top:44px;
   --width:100%;
 }
-
 ion-menu ion-label {
   text-align:center;
 }
-
 ion-menu ion-item {
   --padding-start:0;
 }
@@ -51,3 +50,16 @@ ion-menu ion-item .schoool-icon {
   margin-left:.5rem;
 }
 
+ion-card-title {
+  --color: var(--app-color-blauw);
+}
+
+
+
+.schoool-card {
+  border:none;
+  border-radius: 0;
+  box-shadow:none;
+  margin:0;
+  border-bottom: 1px solid var(--app-color-grijs);
+}
