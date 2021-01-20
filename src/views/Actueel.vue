@@ -16,8 +16,24 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { mapActions } from 'vuex';
 export default defineComponent({
-  name: 'Home',
+  name: 'Actueel',
+
+
+
+  created() {
+    console.log('mounted');
+  },
+
+
+  methods: {
+    ...mapActions('actueel',[
+      'loadData',
+    ]),
+  },
+
+
 });
 </script>
 

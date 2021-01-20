@@ -32,6 +32,16 @@ export default {
     },
 
     actions: {
-
+      loadData(){
+        return window.Api.get( '/schoolbase_nieuws').then(function(response){
+          console.log(response);
+            // if (!_.isUndefined(response.data.notes)) {
+            //     commit('_setNotes',response.data.notes);
+            // }
+            return Promise.resolve(response);
+        }).catch(function(error){
+            return Promise.reject(error);
+        });
+      },
     },
 }
