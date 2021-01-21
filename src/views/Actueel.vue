@@ -34,8 +34,10 @@
 <script>
 import { defineComponent } from 'vue';
 import { mapGetters,mapMutations,mapActions } from 'vuex';
+import {itemsMixin} from "../mixins/items";
 export default defineComponent({
   name: 'Actueel',
+  mixins : [itemsMixin],
 
   created() {
     this.setType('actueel');
@@ -59,23 +61,7 @@ export default defineComponent({
       loadMore: 'loadMore',
     }),
 
-    loadNext(event) {
-      this.loadMore().then(function(){
-        event.target.complete();
-      });
-    },
-
-    hasImage(item) {
-      return (item.carousel.length>0);
-    },
-
-    firstImage(item) {
-      return item.carousel[0];
-    },
-
   },
-
-
 });
 </script>
 

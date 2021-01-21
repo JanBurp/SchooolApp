@@ -17,7 +17,7 @@
 <script>
 import { defineComponent } from 'vue';
 export default defineComponent({
-  name: 'Home',
+  name: 'Foto\'s',
   data: function() {
   },
 });

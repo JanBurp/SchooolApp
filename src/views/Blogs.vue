@@ -36,8 +36,10 @@
 <script>
 import { defineComponent } from 'vue';
 import { mapGetters,mapMutations,mapActions } from 'vuex';
+import {itemsMixin} from "../mixins/items";
 export default defineComponent({
   name: 'Blogs',
+  mixins : [itemsMixin],
 
   created() {
     this.setType('blogs');
@@ -60,20 +62,6 @@ export default defineComponent({
       loadData: 'loadData',
       loadMore: 'loadMore',
     }),
-
-    loadNext(event) {
-      this.loadMore().then(function(){
-        event.target.complete();
-      });
-    },
-
-    hasImage(item) {
-      return (item.carousel.length>0);
-    },
-
-    firstImage(item) {
-      return item.carousel[0];
-    },
 
   },
 
