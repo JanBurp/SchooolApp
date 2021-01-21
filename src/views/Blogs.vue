@@ -35,11 +35,12 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { mapGetters,mapActions } from 'vuex';
+import { mapGetters,mapMutations,mapActions } from 'vuex';
 export default defineComponent({
   name: 'Blogs',
 
   created() {
+    this.setType('blogs');
     this.loadData();
   },
 
@@ -52,6 +53,9 @@ export default defineComponent({
   },
 
   methods: {
+    ...mapMutations('blogs',{
+      setType: 'setType',
+    }),
     ...mapActions('blogs',{
       loadData: 'loadData',
       loadMore: 'loadMore',

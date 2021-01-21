@@ -1,35 +1,20 @@
+const url = {
+  actueel : { load: '/schoolbase_nieuws' },
+  blogs   : { load: '/schoolbase_groepen' },
+};
 
 export default {
     namespaced: true,
-    state: {
+    state: () => ({
+      type : '', // actueel|blogs
       args : {
         start:0,
         end:0,
       },
       loadedAll : false,
-      info : {
-        totals: 0,
-        table: "tbl_actueel",
-        fields: [
-          "str_title",
-          "id_actueel_type",
-          "dat_date",
-          "dat_end_date",
-          "b_visible",
-          "b_restricted",
-          "b_in_nieuwsmail",
-          "txt_text",
-          "str_video",
-          "medias_fotos"
-        ],
-        path: "pictures",
-        user_can_insert: true,
-        user_can_edit: true,
-        user_can_delete: true
-      },
-      items : {
-      },
-    },
+      info : {},
+      items : [],
+    }),
 
     getters : {
 
@@ -50,6 +35,10 @@ export default {
     },
 
     mutations: {
+
+      setType(state,type) {
+        state.type = type;
+      },
 
       _setData(state,data) {
         state.args = data.args;
@@ -76,7 +65,7 @@ export default {
         if (state.info.totals>0) {
           return new Promise.resolve(state.items);
         }
-        return window.Api.get( '/schoolbase_nieuws').then(function(response){
+        return window.Api.get( url[state.type].load ).then(function(response){
           if (response.data.success) {
             commit('_setData',response.data);
           }
@@ -90,7 +79,7 @@ export default {
         let start = state.args.start - window.CONSTANTS.TIME_MONTH;
         let end   = state.args.start;
 
-        return window.Api.get( '/schoolbase_nieuws?start='+start+'&end='+end).then(function(response){
+        return window.Api.get( url[state.type].load + '?start='+start+'&end='+end).then(function(response){
           if (response.data.success) {
             commit('_addData',response.data);
           }

@@ -1,13 +1,12 @@
 import { createStore } from 'vuex'
 
 import user     from './user';
-import actueel  from './actueel';
-import blogs    from './blogs';
+import items    from './items';
 
 export const store = createStore({
   modules: {
     user,
-    actueel,
-    blogs,
+    actueel : items,
+    blogs : items,
   },
 });

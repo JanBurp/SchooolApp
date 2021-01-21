@@ -33,11 +33,12 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { mapGetters,mapActions } from 'vuex';
+import { mapGetters,mapMutations,mapActions } from 'vuex';
 export default defineComponent({
   name: 'Actueel',
 
   created() {
+    this.setType('actueel');
     this.loadData();
   },
 
@@ -50,6 +51,9 @@ export default defineComponent({
   },
 
   methods: {
+    ...mapMutations('actueel',{
+      setType: 'setType',
+    }),
     ...mapActions('actueel',{
       loadData: 'loadData',
       loadMore: 'loadMore',
