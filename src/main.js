@@ -56,7 +56,9 @@ window.Api = {
     return this.call(this._request);
   },
   call : function(request) {
-    request.url = this.base_url + request.url;
+    if (request.url.substr(0,4)!=='http') {
+      request.url = this.base_url + request.url;
+    }
     request.crossdomain = true;
     request.transformResponse = function(data) {
       return JSON.parse(data,function (key, value) {
