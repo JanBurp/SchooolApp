@@ -1,22 +1,14 @@
+require('./globals.js');
+
+// App & Vue
 import { createApp } from 'vue'
 import { IonicVue } from '@ionic/vue';
-
 import App from './App.vue'
 import router from './router/router.js';
 import {store} from './store/store.js';
 
-var _ = require('lodash');
-if (_.isUndefined(_)) {
-  console.log('_ not loaded');
-}
 
-// Axios & API
-window.axios = require('axios');
-window.axios.defaults.headers.common['Content-Type'] = 'application/json';
-// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-// let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InRlc3Rkb2NlbnQiLCJwYXNzd29yZCI6IlRlc3REb2NlbnQxIn0.m-2EKJVppjJsq0lNKWQhvmTssH2fofH5b6dcDze9soQ';
-// window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-
+// Global API
 window.Api = {
   base_url : 'http://develop_schoool.test/_api',
   get : function(url) {
@@ -35,7 +27,7 @@ window.Api = {
     return this.call(this._request);
   },
   patch : function(url,id,data) {
-    if ( _.isUndefined(data) && _.isObject(id)) {
+    if ( window._.isUndefined(data) && window._.isObject(id)) {
       data = id;
     }
     else {
@@ -109,10 +101,17 @@ window.Api = {
 import {
   IonApp,
   IonButtons,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
   IonCol,
+  IonContent,
   IonGrid,
   IonHeader,
   IonIcon,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
   IonItem,
   IonLabel,
   IonList,
@@ -162,10 +161,17 @@ router.isReady().then(() => {
 // Register all Ion components
 app.component('ion-app',IonApp);
 app.component('ion-buttons',IonButtons);
+app.component('ion-card',IonCard);
+app.component('ion-card-content',IonCardContent);
+app.component('ion-card-header',IonCardHeader);
+app.component('ion-card-title',IonCardTitle);
 app.component('ion-col',IonCol);
+app.component('ion-content',IonContent);
 app.component('ion-grid',IonGrid);
 app.component('ion-header',IonHeader);
 app.component('ion-icon',IonIcon);
+app.component('ion-infinite-scroll',IonInfiniteScroll);
+app.component('ion-infinite-scroll-content',IonInfiniteScrollContent);
 app.component('ion-item',IonItem);
 app.component('ion-label',IonLabel);
 app.component('ion-list',IonList);

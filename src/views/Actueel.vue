@@ -23,6 +23,10 @@
           </ion-card-content>
         </ion-card>
       </template>
+      <ion-infinite-scroll v-if="!loadedAll" @ionInfinite="loadNext($event)" threshold="200px" id="infinite-scroll">
+        <schoool-load-more></schoool-load-more>
+      </ion-infinite-scroll>
+      <schoool-load-more v-else :more="false"></schoool-load-more>
     </ion-content>
   </div>
 </template>
@@ -46,13 +50,21 @@ export default defineComponent({
     ...mapGetters('actueel',{
       noItems : 'noItems',
       items : 'getItems',
+      loadedAll : 'loadedAll',
     }),
   },
 
   methods: {
     ...mapActions('actueel',{
       loadData: 'loadData',
+      loadMore: 'loadMore',
     }),
+
+    loadNext(event) {
+      this.loadMore().then(function(){
+        event.target.complete();
+      });
+    },
 
     hasImage(item) {
       return (item.carousel.length>0);
