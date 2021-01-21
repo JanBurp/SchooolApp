@@ -37,11 +37,6 @@ import { mapGetters,mapActions } from 'vuex';
 export default defineComponent({
   name: 'Actueel',
 
-  data : function() {
-    return {
-    }
-  },
-
   created() {
     this.loadData();
   },
