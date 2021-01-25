@@ -11,7 +11,14 @@ export const itemsMixin = {
     },
 
     firstImage(item) {
+      console.log(item);
       return item.carousel[0];
     },
+
+    thumbImage(item) {
+      return item.src_thumb;
+    },
+
+
   },
 };

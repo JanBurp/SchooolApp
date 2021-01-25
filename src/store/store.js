@@ -10,5 +10,6 @@ export const store = createStore({
     user,
     actueel : items,
     blogs : items,
+    fotos : items,
   },
 });

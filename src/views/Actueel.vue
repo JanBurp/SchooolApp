@@ -60,8 +60,8 @@ export default defineComponent({
       loadData: 'loadData',
       loadMore: 'loadMore',
     }),
-
   },
+
 });
 </script>
 

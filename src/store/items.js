@@ -1,12 +1,13 @@
 const url = {
   actueel : { load: '/schoolbase_nieuws' },
   blogs   : { load: '/schoolbase_groepen' },
+  fotos   : { load: '/schoolbase_fotos' },
 };
 
 export default {
     namespaced: true,
     state: () => ({
-      type : '', // actueel|blogs
+      type : '', // actueel|blogs|fotos
       args : {
         start:0,
         end:0,
