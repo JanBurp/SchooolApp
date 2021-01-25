@@ -1,6 +1,6 @@
 <template>
   <div class="schoool-item-image">
-    <img :src="image.src_normal" :alt="image.title" />
+    <img :src="imageAuthorization" :alt="image.title" />
   </div>
 </template>
 
@@ -8,7 +8,15 @@
   export default {
     props : {
       image : Object,
-    }
+    },
+
+    computed : {
+      imageAuthorization() {
+        let url = this.image.src_normal+'?_authorization='+window.token;
+        return url;
+      }
+    },
+
   };
 </script>
 

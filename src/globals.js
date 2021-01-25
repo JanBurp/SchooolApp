@@ -9,9 +9,9 @@ window.CONSTANTS.TIME_4WEEKS = window.CONSTANTS.TIME_WEEK * 4;
 window.CONSTANTS.TIME_MONTH  = window.CONSTANTS.TIME_DAY * 30;
 window.CONSTANTS.TIME_YEAR   = window.CONSTANTS.TIME_DAY * 365;
 // Global libraries
+window.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InRlc3Rkb2NlbnQiLCJwYXNzd29yZCI6IlRlc3REb2NlbnQxIn0.m-2EKJVppjJsq0lNKWQhvmTssH2fofH5b6dcDze9soQ';
 window._ = require('lodash');
 window.axios = require('axios');
 window.axios.defaults.headers.common['Content-Type'] = 'application/json';
 // window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InRlc3Rkb2NlbnQiLCJwYXNzd29yZCI6IlRlc3REb2NlbnQxIn0.m-2EKJVppjJsq0lNKWQhvmTssH2fofH5b6dcDze9soQ';
-window.axios.defaults.headers.common['Authorization'] = token;
+window.axios.defaults.headers.common['Authorization'] = window.token;
