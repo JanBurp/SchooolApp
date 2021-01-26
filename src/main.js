@@ -111,6 +111,7 @@ import {
   IonGrid,
   IonHeader,
   IonIcon,
+  IonImg,
   IonInfiniteScroll,
   IonInfiniteScrollContent,
   IonItem,
@@ -121,6 +122,8 @@ import {
   IonMenuToggle,
   IonRouterOutlet,
   IonRow,
+  IonSlide,
+  IonSlides,
   IonTitle,
   IonToolbar,
 } from '@ionic/vue';
@@ -171,6 +174,7 @@ app.component('ion-content',IonContent);
 app.component('ion-grid',IonGrid);
 app.component('ion-header',IonHeader);
 app.component('ion-icon',IonIcon);
+app.component('ion-img',IonImg);
 app.component('ion-infinite-scroll',IonInfiniteScroll);
 app.component('ion-infinite-scroll-content',IonInfiniteScrollContent);
 app.component('ion-item',IonItem);
@@ -181,6 +185,8 @@ app.component('ion-menu-button',IonMenuButton);
 app.component('ion-menu-toggle',IonMenuToggle);
 app.component('ion-router-outlet',IonRouterOutlet);
 app.component('ion-row',IonRow);
+app.component('ion-slide',IonSlide);
+app.component('ion-slides',IonSlides);
 app.component('ion-title',IonTitle);
 app.component('ion-toolbar',IonToolbar);
 

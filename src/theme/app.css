@@ -8,6 +8,8 @@
   --app-color-grijs: #3B3E49;
   --app-color-lichtgrijs: #93979C;
   --app-color-geel: #F6BE2F;
+  --app-color-zwart:#000;
+  --app-color-wit:#FFF;
 
   /* Ionic overrides */
   --ion-color-primary: var(--app-color-blauw);
@@ -19,12 +21,17 @@
 .app-color-grijs { color: var(--app-color-grijs)}
 .app-color-lichtgrijs { color: var(--app-color-lichtgrijs)}
 .app-color-geel { color: var(--app-color-geel)}
+.app-color-zwart {color: var(--app-color-zwart)}
+.app-color-wit {color: var(--app-color-wit)}
 
 .app-background-color-rood { background-color: var(--app-color-rood)}
 .app-background-color-blauw { background-color: var(--app-color-blauw)}
 .app-background-color-grijs { background-color: var(--app-color-grijs)}
 .app-background-color-lichtgrijs { background-color: var(--app-color-lichtgrijs)}
 .app-background-color-geel { background-color: var(--app-color-geel)}
+.app-background-color-zwart {color: var(--app-color-zwart)}
+.app-background-color-wit {color: var(--app-color-wit)}
+
 
 /* Ionic overrides */
 
@@ -34,6 +41,10 @@ ion-title, ion-menu-button {
 
 ion-menu-button {
   /*width:50px;*/
+}
+
+ion-icon {
+  --color: var(--app-color-wit);
 }
 
 ion-menu {

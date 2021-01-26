@@ -12,9 +12,9 @@
       <schoool-nocontent v-if="noItems"></schoool-nocontent>
       <template v-else>
         <div class="grid">
-          <div class="grid-square" v-for="item in items" :key="item.id">
+          <div class="grid-square" v-for="(item,index) in items" :key="index">
             <div class="grid-content">
-              <schoool-item-image :image="item" size="normal" :cropped="true"></schoool-item-image>
+              <schoool-item-image :image="item" size="normal" :cropped="true" @click="zoomFoto(index)"></schoool-item-image>
             </div>
           </div>
         </div>
@@ -25,6 +25,27 @@
       <schoool-load-more v-else :more="false"></schoool-load-more>
     </ion-content>
   </div>
+
+  <div v-if="zoom" class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons class="ion-justify-content-between">
+          <schoool-icon name="r" class="app-color-wit" @click="zoomFoto(0)"></schoool-icon>
+          <schoool-icon name="download" class="app-color-wit" @click="download()"></schoool-icon>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div class="zoom-container">
+        <ion-slides :options="slideOpts" @ionSlideDidChange="slideDidChange">
+          <ion-slide v-for="(item,index) in items" :key="index">
+            <schoool-item-image :image="item" size="normal"></schoool-item-image>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </ion-content>
+  </div>
+
 </template>
 
 <script>
@@ -35,6 +56,16 @@ import {itemsMixin} from "../mixins/items";
 export default defineComponent({
   name: 'Foto\'s',
   mixins : [itemsMixin],
+
+  data : function() {
+    return {
+      zoom : false,
+      slideOpts : {
+        initialSlide : 0,
+      },
+      activeSlide : 0,
+    };
+  },
 
   created() {
     this.setType('fotos');
@@ -57,6 +88,26 @@ export default defineComponent({
       loadData: 'loadData',
       loadMore: 'loadMore',
     }),
+
+    zoomFoto(item) {
+      this.zoom = !this.zoom;
+      this.slideOpts.initialSlide = item;
+      console.log('Zoom', this.zoom, this.slideOpts.initialSlide);
+    },
+
+    slideDidChange(event) {
+      let swiper = event.target;
+      let self = this;
+      swiper.getActiveIndex().then(function(index){
+        self.activeSlide = index;
+      });
+    },
+
+    download() {
+      let item = this.items[this.activeSlide];
+      console.log('download',this.activeSlide,item);
+    },
+
   },
 
 });
@@ -89,4 +140,16 @@ export default defineComponent({
     width: 100%;
     overflow:hidden;
   }
+
+  .zoom-container {
+    width:100%;
+    height: 100%;
+    background-color: #000;
+    color:#FFF;
+  }
+
+  .swiper-slide {
+    margin:auto;
+  }
+
 </style>
