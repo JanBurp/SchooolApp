@@ -1,11 +1,14 @@
 <template>
   <div class="schoool-logo">
-    <img src="assets/img/schoool.svg" alt="Logo" />
+    <img :src="logo" alt="Logo" />
   </div>
 </template>
 
 <script>
   export default {
+    props : {
+      logo : String,
+    },
   };
 </script>
 
@@ -14,6 +17,7 @@
     text-align:center;
   }
   .schoool-logo img {
-    height: 10rem;
+    height: 7rem;
+    margin:1rem 0 2rem;
   }
 </style>

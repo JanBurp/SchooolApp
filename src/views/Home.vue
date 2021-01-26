@@ -10,7 +10,7 @@
     <ion-grid class="app-home-item-grid">
       <ion-row>
         <ion-col>
-          <schoool-logo></schoool-logo>
+          <schoool-logo :logo="getLogo"></schoool-logo>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -64,11 +64,29 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { mapGetters,mapActions } from 'vuex';
 export default defineComponent({
   name: 'Home',
   data: function() {
     return {}
   },
+
+  created() {
+    this.loadSchool('Develop_2.0');
+    // console.log('SCHOOL', this.$store.state.school.str_code, this.getHash );
+  },
+
+  computed : {
+    ...mapGetters('school',{
+      getLogo : 'getLogo',
+    }),
+  },
+  methods : {
+    ...mapActions('school',{
+      loadSchool : 'loadSchool',
+    }),
+  },
+
 });
 </script>
 
