@@ -10,7 +10,6 @@ import {store} from './store/store.js';
 
 // Global API
 window.Api = {
-  base_url : 'http://develop_schoool.test/_api',
   get : function(url) {
     this._request = {
       url    : url,
@@ -57,7 +56,7 @@ window.Api = {
   },
   call : function(request) {
     if (request.url.substr(0,4)!=='http') {
-      request.url = this.base_url + request.url;
+      request.url = window.api_url + request.url;
     }
     request.crossdomain = true;
     request.transformResponse = function(data) {

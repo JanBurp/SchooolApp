@@ -9,21 +9,35 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <schoool-nocontent></schoool-nocontent>
+      <iframe :src="url"></iframe>
     </ion-content>
   </div>
 </template>
-
-
 
 <script>
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'Kalender',
-  data: function() {
+
+  data : function() {
+    return {
+      kalenderHtml : '',
+    };
   },
+
+  computed : {
+    url() {
+      return window.kalender_url;
+    }
+  },
+
 });
 </script>
 
 <style scoped>
+  iframe {
+    border:none;
+    width:100%;
+    height: 100%;
+  }
 </style>
