@@ -11,7 +11,6 @@ export const itemsMixin = {
     },
 
     firstImage(item) {
-      console.log(item);
       return item.carousel[0];
     },
 

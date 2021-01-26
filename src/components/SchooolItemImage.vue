@@ -14,7 +14,7 @@
       },
       cropped : {
         type:Boolean,
-        default:true,
+        default:false,
       }
     },
 
@@ -64,6 +64,8 @@
 
 <style scoped>
   .schoool-item-image {
+  }
+  .schoool-item-image.image-cropped {
     position: relative;
     overflow:hidden;
     width:100%;
@@ -72,17 +74,19 @@
     max-height: 100%;
   }
   .schoool-item-image.image-cropped img {
+    position: absolute;
+    width:auto;
+    max-width: none;
     height: 100%;
     max-height: 100%;
-    margin-top:-50%;
-    margin-left:-50%;
-    transform: translate(50%,50%);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
   }
   .schoool-item-image.image-cropped.image-portrait img {
     width: 100%;
     max-width: 100%;
-    margin-top:-50%;
-    margin-left:-50%;
-    transform: translate(50%,50%);
+    height: auto;
+    max-height: none;
   }
 </style>

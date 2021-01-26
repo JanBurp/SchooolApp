@@ -1,7 +1,7 @@
-const url = {
-  actueel : { load: '/schoolbase_nieuws' },
-  blogs   : { load: '/schoolbase_groepen' },
-  fotos   : { load: '/schoolbase_fotos' },
+const type = {
+  actueel : { loadUrl: '/schoolbase_nieuws' },
+  blogs   : { loadUrl: '/schoolbase_groepen' },
+  fotos   : { loadUrl: '/schoolbase_fotos' },
 };
 
 export default {
@@ -66,7 +66,7 @@ export default {
         if (state.info.totals>0) {
           return new Promise.resolve(state.items);
         }
-        return window.Api.get( url[state.type].load ).then(function(response){
+        return window.Api.get( type[state.type].loadUrl ).then(function(response){
           if (response.data.success) {
             commit('_setData',response.data);
           }
@@ -80,7 +80,7 @@ export default {
         let start = state.args.start - window.CONSTANTS.TIME_MONTH;
         let end   = state.args.start;
 
-        return window.Api.get( url[state.type].load + '?start='+start+'&end='+end).then(function(response){
+        return window.Api.get( type[state.type].loadUrl + '?start='+start+'&end='+end).then(function(response){
           if (response.data.success) {
             commit('_addData',response.data);
           }

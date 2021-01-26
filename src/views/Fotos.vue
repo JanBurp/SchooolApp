@@ -19,6 +19,10 @@
           </div>
         </div>
       </template>
+      <ion-infinite-scroll v-if="!loadedAll" @ionInfinite="loadNext($event)" threshold="200px" id="infinite-scroll">
+        <schoool-load-more></schoool-load-more>
+      </ion-infinite-scroll>
+      <schoool-load-more v-else :more="false"></schoool-load-more>
     </ion-content>
   </div>
 </template>
@@ -55,10 +59,6 @@ export default defineComponent({
     }),
   },
 
-
-
-  data: function() {
-  },
 });
 </script>
 
@@ -66,6 +66,7 @@ export default defineComponent({
   .grid {
     display: flex;
     flex-wrap: wrap;
+    width:100%;
   }
 
   .grid-square {
