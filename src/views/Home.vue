@@ -1,68 +1,138 @@
 <template>
-  <ion-page>
-    <ion-header :translucent="true">
+  <div class="ion-page" id="main-content">
+    <ion-header>
       <ion-toolbar>
-        <ion-title>Titel</ion-title>
+        <ion-buttons slot="start">
+          <img src="assets/img/uitloggen-wit.svg" />
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
-
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Titel</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div id="container">
-        <strong>Schoool</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
-    </ion-content>
-  </ion-page>
+    <ion-grid class="app-home-item-grid">
+      <ion-row>
+        <ion-col>
+          <schoool-logo :logo="getLogo"></schoool-logo>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-router-link href="/actueel">
+          <ion-col class="app-home-item app-home-item-actueel app-background-color-rood">
+            <div>
+              <img src="assets/img/actueel-rood.svg" />
+              <p>Actueel</p>
+            </div>
+          </ion-col>
+        </ion-router-link>
+        <ion-router-link href="/blogs">
+          <ion-col class="app-home-item app-home-item-blogs app-background-color-blauw">
+            <div>
+              <img src="assets/img/groepen-blauw.svg" />
+              <p>Groepsblogs</p>
+            </div>
+          </ion-col>
+        </ion-router-link>
+      </ion-row>
+      <ion-row>
+        <ion-router-link href="/kalender">
+          <ion-col class="app-home-item app-home-item-kalender app-background-color-grijs">
+            <div>
+              <img src="assets/img/kalender-grijs.svg" />
+              <p>Kalender</p>
+            </div>
+          </ion-col>
+        </ion-router-link>
+        <ion-router-link href="/fotos">
+          <ion-col class="app-home-item app-home-item-fotos app-background-color-geel">
+            <div>
+              <img src="assets/img/fotos-geel.svg" />
+              <p>Foto's</p>
+            </div>
+          </ion-col>
+        </ion-router-link>
+      </ion-row>
+      <ion-row>
+        <ion-col class="app-home-profiel">
+          <ion-router-link href="/profiel">
+            <schoool-icon name="profiel" class="app-color-blauw"></schoool-icon>
+            Profiel
+          </ion-router-link>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </template>
 
-<script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
 
+<script>
+import { defineComponent } from 'vue';
+import { mapGetters,mapActions } from 'vuex';
 export default defineComponent({
   name: 'Home',
-  components: {
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonToolbar
-  }
+  data: function() {
+    return {}
+  },
+
+  created() {
+    this.loadSchool('Develop_2.0');
+    // console.log('SCHOOL', this.$store.state.school.str_code, this.getHash );
+  },
+
+  computed : {
+    ...mapGetters('school',{
+      getLogo : 'getLogo',
+    }),
+  },
+  methods : {
+    ...mapActions('school',{
+      loadSchool : 'loadSchool',
+    }),
+  },
+
 });
 </script>
 
 <style scoped>
-#container {
-  text-align: center;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  .buttons-first-slot img {
+    height:1.5rem;
+    width:1.5rem;
+  }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+  .app-home-item {
+    display: block;
+    position: relative;
+    width:10rem;
+    height: 10rem;
+  }
+  .app-home-item div {
+    display: block;
+    position: absolute;
+    width:100%;
+    height: 100%;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+  }
+  .app-home-item div img {
+    position: absolute;
+    width: 50%;
+    top:20%;
+    left:25%;
+  }
+  .app-home-item div p {
+    position: absolute;
+    bottom:8%;
+    width: 100%;
+    color:#FFF;
+    text-align: center;
+  }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+  .app-home-profiel {
+    text-align:center;
+    width:auto;
+    position: absolute;
+    bottom:1rem;
+    left:50%;
+    transform: translateX(-50%);
+  }
 
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
 </style>
