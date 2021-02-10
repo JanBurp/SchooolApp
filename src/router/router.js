@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
-// import { RouteRecordRaw } from 'vue-router';
-// import Home from '../views/Home.vue'
 
 const routes = [
   {
@@ -23,7 +21,7 @@ const routes = [
     meta: {
       title :'Actueel',
       icon: 'actueel',
-      order: 1,
+      order: 10,
     },
     component: () => import('@/views/Actueel.vue'),
   },
@@ -33,7 +31,7 @@ const routes = [
      meta: {
        title :'Groepsblogs',
        icon: 'blog',
-       order: 2,
+       order: 20,
      },
      component: () => import('@/views/Blogs.vue'),
   },
@@ -43,7 +41,7 @@ const routes = [
      meta: {
        title :'Kalender',
        icon: 'kalender',
-       order: 3,
+       order: 30,
      },
      component: () => import('@/views/Kalender.vue'),
   },
@@ -53,7 +51,7 @@ const routes = [
      meta: {
        title :'Fotos',
        icon: 'fotos',
-       order: 4,
+       order: 40,
      },
      component: () => import('@/views/Fotos.vue'),
   },
@@ -63,40 +61,42 @@ const routes = [
      meta: {
        title :'Profiel',
        icon: 'profiel',
-       order: 5,
+       order: 50,
+       has_sub : true,
      },
      component: () => import('@/views/Profiel.vue'),
   },
-    // {
-    //    path: '/profiel/nieuwsbrief',
-    //    name: 'nieuwsbrief',
-    //    meta: {
-    //      title :'Nieuwsbrief',
-    //      icon: 'nieuwsbrief',
-    //      order: 6,
-    //    },
-    //    component: () => import('@/views/Nieuwsbrief.vue'),
-    // },
-    // {
-    //    path: '/profiel/privacy',
-    //    name: 'privacy',
-    //    meta: {
-    //      title :'Privacy',
-    //      icon: 'privacy',
-    //      order: 7,
-    //    },
-    //    component: () => import('@/views/Privacy.vue'),
-    // },
-    // {
-    //    path: '/profiel/adres',
-    //    name: 'adres',
-    //    meta: {
-    //      title :'Adres',
-    //      icon: 'adres',
-    //      order: 8,
-    //    },
-    //    component: () => import('@/views/Adres.vue'),
-    // },
+
+    {
+       path: '/profiel/nieuwsbrief',
+       name: 'nieuwsbrief',
+       meta: {
+         title :'Nieuwsbrief instellingen',
+         order: 51,
+         is_sub : 'profiel',
+       },
+       component: () => import('@/views/Nieuwsbrief.vue'),
+    },
+    {
+       path: '/profiel/privacy',
+       name: 'privacy',
+       meta: {
+         title :'Privacy instellingen',
+         order: 52,
+         is_sub : 'profiel',
+       },
+       component: () => import('@/views/Privacy.vue'),
+    },
+    {
+       path: '/profiel/adres',
+       name: 'adres',
+       meta: {
+         title :'Adresgegevens',
+         order: 53,
+         is_sub : 'profiel',
+       },
+       component: () => import('@/views/Adres.vue'),
+    },
 
 ]
 

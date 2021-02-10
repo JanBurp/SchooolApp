@@ -36,20 +36,18 @@
   border-radius: 50%;
 }
 
+
 /* Ionic overrides */
 
 ion-title, ion-menu-button {
   color:#FFF;
 }
 
-ion-menu-button {
-  /*width:50px;*/
-}
-
 ion-icon {
-  --color: var(--app-color-wit);
+  --color: var(--app-color-geel);
 }
 
+/* MENU - ITEMS */
 ion-menu {
   top:44px;
   --width:100%;
@@ -59,16 +57,28 @@ ion-menu ion-label {
 }
 ion-menu ion-item {
   --padding-start:0;
+  --border-color: var(--app-color-grijs) !important;
 }
+ion-menu ion-item.ion-color-primary {
+  --ion-color-shade: var(--app-color-grijs) !important;
+}
+ion-menu ion-item.ion-color-primary * {color: var(--app-color-wit)}
 ion-menu ion-item .schoool-icon {
   margin-left:.5rem;
 }
 
-ion-card-title {
-  --color: var(--app-color-blauw);
+
+ion-list.sub-menu.closed {
+  height: 0;
 }
 
 
+
+
+/* CARDS */
+ion-card-title {
+  --color: var(--app-color-blauw);
+}
 
 .schoool-card {
   border:none;

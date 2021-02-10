@@ -134,5 +134,8 @@ export default defineComponent({
     left:50%;
     transform: translateX(-50%);
   }
+  .app-home-profiel .schoool-icon {
+    margin:auto;
+  }
 
 </style>

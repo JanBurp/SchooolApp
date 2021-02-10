@@ -152,6 +152,18 @@ import './theme/variables.css';
 import './theme/schoool-icons.css';
 import './theme/app.css';
 
+/* Icons */
+// import * as allIcons from 'ionicons/icons';
+// import { addIcons } from 'ionicons';
+// const currentIcons = Object.keys(allIcons).map(i => {
+//   return {
+//     ['ios-' + i]: allIcons[i].ios,
+//     ['md-' + i]: allIcons[i].md
+//   };
+// });
+// const iconsObject = Object.assign({}, ...currentIcons);
+// addIcons(iconsObject);
+
 
 const app = createApp(App)
   .use(IonicVue)
