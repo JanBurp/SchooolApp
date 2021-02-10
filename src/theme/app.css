@@ -32,6 +32,9 @@
 .app-background-color-zwart {color: var(--app-color-zwart)}
 .app-background-color-wit {color: var(--app-color-wit)}
 
+.circle {
+  border-radius: 50%;
+}
 
 /* Ionic overrides */
 

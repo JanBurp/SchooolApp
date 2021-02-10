@@ -2,47 +2,13 @@
   <ion-app>
     <ion-menu side="start" content-id="main-content">
       <ion-list>
-        <ion-item>
-          <schoool-icon name="home" class="app-color-blauw"></schoool-icon>
-          <ion-label><ion-router-link href="/home">Home</ion-router-link></ion-label>
+
+        <ion-item v-for="(route,index) in routes" :key="index">
+          <schoool-icon :name="route.meta.icon" :class="iconClass(route)"></schoool-icon>
+          <ion-label><ion-router-link :href="route.path">{{route.meta.title}}</ion-router-link></ion-label>
         </ion-item>
-        <ion-item>
-          <schoool-icon name="actueel" class="app-color-blauw"></schoool-icon>
-          <ion-label><ion-router-link href="/actueel">Actueel</ion-router-link></ion-label>
-        </ion-item>
-        <ion-item>
-          <schoool-icon name="blog" class="app-color-blauw"></schoool-icon>
-          <ion-label><ion-router-link href="/blogs">Groepsblogs</ion-router-link></ion-label>
-        </ion-item>
-        <ion-item>
-          <schoool-icon name="kalender" class="app-color-blauw"></schoool-icon>
-          <ion-label><ion-router-link href="/kalender">Kalender</ion-router-link></ion-label>
-        </ion-item>
-        <ion-item>
-          <schoool-icon name="fotos" class="app-color-blauw"></schoool-icon>
-          <ion-label><ion-router-link href="/fotos">Fotos</ion-router-link></ion-label>
-        </ion-item>
-        <ion-item>
-          <schoool-icon name="profiel" class="app-color-blauw"></schoool-icon>
-          <ion-label><ion-router-link href="/profiel">Profiel</ion-router-link></ion-label>
-        </ion-item>
-<!--         <ion-item>
-          <ion-menu-toggle>
-              <ion-item>
-                <ion-icon name="nieuwsbrief" slot="start"></ion-icon>
-                <ion-label><ion-router-link href="/profiel/nieuwsbrief">Nieuwsbrief Instellingen</ion-router-link></ion-label>
-              </ion-item>
-              <ion-item>
-                <ion-icon name="privacy" slot="start"></ion-icon>
-                <ion-label><ion-router-link href="/profiel/privacy">Privacy Instellingen</ion-router-link></ion-label>
-              </ion-item>
-              <ion-item>
-                <ion-icon name="adres" slot="start"></ion-icon>
-                <ion-label><ion-router-link href="/profiel/adres">Adresgegevens</ion-router-link></ion-label>
-              </ion-item>
-          </ion-menu-toggle>
-        </ion-item>
- -->      </ion-list>
+
+      </ion-list>
     </ion-menu>
 
     <ion-router-outlet></ion-router-outlet>
@@ -54,5 +20,43 @@
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'App',
+
+  data: function() {
+    return {
+    };
+  },
+
+  mounted() {
+    // console.log(this.currentRoute, this.routes);
+  },
+
+  computed : {
+
+    routes() {
+      let routes = this.$router.getRoutes();
+      routes = routes.filter( r => r.path!=='/' );
+      return window._.sortBy(routes,'meta.order');
+    },
+    currentRoute() {
+      return this.$route;
+    },
+
+  },
+
+  methods : {
+
+    iconClass(route) {
+      if (route.name==this.currentRoute.name) {
+        return 'app-background-color-blauw app-color-wit circle';
+      }
+      else {
+        return 'app-color-blauw';
+      }
+    },
+
+  },
+
+
+
 });
 </script>

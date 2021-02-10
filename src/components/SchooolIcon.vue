@@ -49,7 +49,13 @@
 </script>
 
 <style scoped>
+  .schoool-icon {
+    width:2rem;
+    height: 2rem;
+  }
   .schoool-icon::before {
+    position: relative;
+    top: 0.15rem;
     font-size: 2rem;
   }
 </style>
