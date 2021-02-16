@@ -29,10 +29,10 @@ export default {
 
       getItems : (state) => (id_type) => {
         let items = window._.sortBy(state.items,'dat_date');
-        if (!isNaN(id_type) && state.type=='actueel') {
+        if ( !isNaN(id_type) && id_type!='' && state.type=='actueel') {
           items = items.filter( i => i.id_actueel_type==id_type);
         }
-        if (!isNaN(id_type) && state.type=='blogs') {
+        if ( !isNaN(id_type) && id_type!='' && state.type=='blogs') {
           items = items.filter( i => i.id_groepen==id_type);
         }
         items.reverse();

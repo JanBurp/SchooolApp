@@ -16,6 +16,7 @@ export default {
         url_url: '',
         media_logo: '',
 
+        infoLoaded : false,
         name:'',
         logo: {},
         rgb_achtergrond:'',
@@ -87,6 +88,7 @@ export default {
         },
 
         _setSchoolInfo(state,data) {
+            state.infoLoaded = true;
             state.name = data.name;
             state.logo = data.logo;
             state.rgb_achtergrond = data.rgb_achtergrond;
@@ -121,6 +123,10 @@ export default {
         },
 
         loadSchoolInfo({commit}) {
+            // console.log('loadSchoolInfo',state.infoLoaded);
+            // if (state.infoLoaded) {
+            //     return true;
+            // }
             return window.Api.get( '/schoolbase_info' ).then(function(response){
               if (response.data.success) {
                 commit('_setSchoolInfo',response.data.data);
@@ -130,17 +136,6 @@ export default {
               return Promise.reject(error);
             });
         },
-
-        // loadGroepen({commit}) {
-        //     return window.Api.get( '/schoolbase_groepen_info' ).then(function(response){
-        //       if (response.data.success) {
-        //         commit('_setGroepen',response.data.data);
-        //       }
-        //       return Promise.resolve(response);
-        //     }).catch(function(error){
-        //       return Promise.reject(error);
-        //     });
-        // },
 
     },
 }

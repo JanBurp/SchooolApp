@@ -59,7 +59,7 @@ export default defineComponent({
     },
 
     title() {
-      if (!isNaN(this.id_type)) {
+      if (!isNaN(this.id_type) && this.id_type!='') {
         return this.getActueelTypeTitle(this.id_type);
       }
       return 'Actueel';
