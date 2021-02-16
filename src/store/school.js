@@ -9,6 +9,7 @@ const getHash = function(code) {
 export default {
     namespaced: true,
     state: {
+        schoolLoaded : false,
         str_title: '',
         b_free_account: false,
         // str_code: "Develop_2.0",
@@ -85,10 +86,11 @@ export default {
             state.url_url = data.url_url;
             state.media_logo = data.media_logo;
             state.rgb_achtergrond = data.rgb_achtergrond;
+            //
+            state.schoolLoaded =  true;
         },
 
         _setSchoolInfo(state,data) {
-            state.infoLoaded = true;
             state.name = data.name;
             state.logo = data.logo;
             state.rgb_achtergrond = data.rgb_achtergrond;
@@ -100,6 +102,8 @@ export default {
             state.groepen = data.groepen;
             state.disclaimer_text = data.disclaimer_text;
             state.disclaimer_title = data.disclaimer_title;
+            //
+            state.infoLoaded = true;
         },
 
         // _setGroepen(state,data) {
@@ -110,7 +114,10 @@ export default {
 
     actions: {
 
-        loadSchool({commit},code) {
+        loadSchool({commit,state},code) {
+            if (state.schoolLoaded) {
+                return true;
+            }
             let hash = getHash(code);
             return window.Api.get( 'https://schoool.nl/_api/school?hash='+hash ).then(function(response){
               if (response.data.success) {
@@ -122,11 +129,10 @@ export default {
             });
         },
 
-        loadSchoolInfo({commit}) {
-            // console.log('loadSchoolInfo',state.infoLoaded);
-            // if (state.infoLoaded) {
-            //     return true;
-            // }
+        loadSchoolInfo({commit,state}) {
+            if (state.infoLoaded) {
+                return true;
+            }
             return window.Api.get( '/schoolbase_info' ).then(function(response){
               if (response.data.success) {
                 commit('_setSchoolInfo',response.data.data);

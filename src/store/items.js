@@ -68,11 +68,9 @@ export default {
     actions: {
 
       loadData({commit,state}) {
-        // console.log(state.info.totals);
-        // if (state.info.totals>0) {
-        //   let response = new Promise;
-        //   return response.resolve(state.items);
-        // }
+        if (state.info && state.info.totals>0) {
+          return true;
+        }
         return window.Api.get( type[state.type].loadUrl ).then(function(response){
           if (response.data.success) {
             commit('_setData',response.data);

@@ -1,5 +1,5 @@
 <template>
-  <div class="ion-page" id="main-content">
+  <ion-page id="main-content">
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
@@ -11,7 +11,7 @@
     <ion-content>
       <iframe :src="url"></iframe>
     </ion-content>
-  </div>
+  </ion-page>
 </template>
 
 <script>

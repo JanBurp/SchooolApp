@@ -2,23 +2,18 @@
   <ion-app>
     <ion-menu side="start" content-id="main-content">
       <ion-list>
-
         <template v-for="(route,index) in menu" :key="index">
-
           <ion-item :color="itemClass(route)" button :detail="false">
             <schoool-icon v-if="route.meta.icon" :name="route.meta.icon" :class="iconClass(route)"></schoool-icon>
-            <ion-label><ion-router-link :href="route.path">{{route.meta.title}}</ion-router-link></ion-label>
+            <ion-label @click="navigate(url(route.path))">{{route.meta.title}}</ion-label>
             <icon v-if="route.meta.has_sub" :name="submenuIcon(index)" @click="openSub(index)"></icon>
           </ion-item>
-
           <ion-list v-if="route.sub" :id="'sub-'+index" class="sub-menu" :class="subMenuClass(index)">
             <ion-item v-for="(route,index) in route.sub" :key="index" :color="itemClass(route)" button :detail="false">
-              <ion-label :class="itemActiveClass(route)"><ion-router-link :href="route.path">{{route.meta.title}}</ion-router-link></ion-label>
+              <ion-label :class="itemActiveClass(route)" @click="navigate(url(route.path))">{{route.meta.title}}</ion-label>
             </ion-item>
           </ion-list>
-
         </template>
-
       </ion-list>
     </ion-menu>
 
@@ -29,6 +24,7 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { menuController } from '@ionic/vue';
 export default defineComponent({
   name: 'App',
 
@@ -78,9 +74,20 @@ export default defineComponent({
     setOpenSubs() {
       let path = this.$route.path.replace(/(\/.*?)\/.*/g, "$1");
       let idx = this.menu.findIndex( i=>i.path.indexOf(path)>=0);
+      let id = 'sub-'+idx;
       if (idx>0) {
-        this.openSubs.push('sub-'+idx);
+        this.openSubs = [id];
       }
+    },
+
+    url(path) {
+      path = path.replace('/:id_type?','');
+      return path;
+    },
+
+    navigate(url) {
+      menuController.close();
+      this.$router.push(url);
     },
 
     itemClass(route) {

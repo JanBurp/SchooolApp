@@ -118,6 +118,7 @@ import {
   IonMenu,
   IonMenuButton,
   IonMenuToggle,
+  IonPage,
   IonRouterOutlet,
   IonRow,
   IonSlide,
@@ -223,6 +224,7 @@ app.component('ion-list',IonList);
 app.component('ion-menu',IonMenu);
 app.component('ion-menu-button',IonMenuButton);
 app.component('ion-menu-toggle',IonMenuToggle);
+app.component('ion-page',IonPage);
 app.component('ion-router-outlet',IonRouterOutlet);
 app.component('ion-row',IonRow);
 app.component('ion-slide',IonSlide);

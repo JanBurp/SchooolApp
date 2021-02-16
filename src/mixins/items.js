@@ -7,10 +7,26 @@ export const itemsMixin = {
   },
 
   mounted() {
-    this.id_type = this.$route.params.id_type;
+    this.setTypeId();
+  },
+
+  watch: {
+    '$route.path': function() {
+      this.setTypeId();
+    }
   },
 
   methods: {
+
+    setTypeId() {
+      let match = this.$route.path.match(/\/.*\/(.*)/);
+      if (match) {
+        this.id_type = match[1];
+      }
+      else {
+         this.id_type = false;
+      }
+    },
 
     loadNext(event) {
       this.loadMore().then(function(){

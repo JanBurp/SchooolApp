@@ -16,7 +16,7 @@ const routes = [
     component: () => import('@/views/Home.vue'),
   },
   {
-    path: '/actueel/:id_type?',
+    path: '/actueel',
     name: 'actueel',
     meta: {
       title :'Actueel',
@@ -29,7 +29,7 @@ const routes = [
     // Sub actueel_types
 
   {
-     path: '/blogs/:id_type?',
+     path: '/blogs',
      name: 'blogs',
      meta: {
        title :'Groepsblogs',

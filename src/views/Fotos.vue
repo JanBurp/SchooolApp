@@ -1,51 +1,53 @@
 <template>
-  <div class="ion-page" id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Foto's</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <schoool-nocontent v-if="noItems"></schoool-nocontent>
-      <template v-else>
-        <div class="grid">
-          <div class="grid-square" v-for="(item,index) in items" :key="index">
-            <div class="grid-content">
-              <schoool-item-image :image="item" size="normal" :cropped="true" @click="zoomFoto(index)"></schoool-item-image>
+  <ion-page>
+    <template v-if="!zoom">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Foto's</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <schoool-nocontent v-if="noItems"></schoool-nocontent>
+        <template v-else>
+          <div class="grid">
+            <div class="grid-square" v-for="(item,index) in items" :key="index">
+              <div class="grid-content">
+                <schoool-item-image :image="item" size="normal" :cropped="true" @click="zoomFoto(index)"></schoool-item-image>
+              </div>
             </div>
           </div>
+        </template>
+        <ion-infinite-scroll v-if="!loadedAll" @ionInfinite="loadNext($event)" threshold="200px" id="infinite-scroll">
+          <schoool-load-more></schoool-load-more>
+        </ion-infinite-scroll>
+        <schoool-load-more v-else :more="false"></schoool-load-more>
+      </ion-content>
+    </template>
+
+    <template v-else>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons class="ion-justify-content-between">
+            <schoool-icon name="r" class="app-color-wit" @click="zoomFoto(0)"></schoool-icon>
+            <schoool-icon name="download" class="app-color-wit" @click="download()"></schoool-icon>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="zoom-container">
+          <ion-slides :options="slideOpts" @ionSlideDidChange="slideDidChange">
+            <ion-slide v-for="(item,index) in items" :key="index">
+              <schoool-item-image :image="item" size="normal"></schoool-item-image>
+            </ion-slide>
+          </ion-slides>
         </div>
-      </template>
-      <ion-infinite-scroll v-if="!loadedAll" @ionInfinite="loadNext($event)" threshold="200px" id="infinite-scroll">
-        <schoool-load-more></schoool-load-more>
-      </ion-infinite-scroll>
-      <schoool-load-more v-else :more="false"></schoool-load-more>
-    </ion-content>
-  </div>
+      </ion-content>
+    </template>
 
-  <div v-if="zoom" class="ion-page" id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons class="ion-justify-content-between">
-          <schoool-icon name="r" class="app-color-wit" @click="zoomFoto(0)"></schoool-icon>
-          <schoool-icon name="download" class="app-color-wit" @click="download()"></schoool-icon>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <div class="zoom-container">
-        <ion-slides :options="slideOpts" @ionSlideDidChange="slideDidChange">
-          <ion-slide v-for="(item,index) in items" :key="index">
-            <schoool-item-image :image="item" size="normal"></schoool-item-image>
-          </ion-slide>
-        </ion-slides>
-      </div>
-    </ion-content>
-  </div>
-
+  </ion-page>
 </template>
 
 <script>
@@ -75,9 +77,14 @@ export default defineComponent({
   computed : {
     ...mapGetters('fotos',{
       noItems : 'noItems',
-      items : 'getItems',
+      getItems : 'getItems',
       loadedAll : 'loadedAll',
     }),
+
+    items() {
+      return this.getItems();
+    },
+
   },
 
   methods: {
@@ -92,7 +99,6 @@ export default defineComponent({
     zoomFoto(item) {
       this.zoom = !this.zoom;
       this.slideOpts.initialSlide = item;
-      console.log('Zoom', this.zoom, this.slideOpts.initialSlide);
     },
 
     slideDidChange(event) {

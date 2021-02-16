@@ -1,5 +1,5 @@
 <template>
-  <div class="ion-page" id="main-content">
+  <ion-page id="main-content">
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
@@ -14,51 +14,41 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-router-link href="/actueel">
-          <ion-col class="app-home-item app-home-item-actueel app-background-color-rood">
-            <div>
-              <img src="assets/img/actueel-rood.svg" />
-              <p>Actueel</p>
-            </div>
-          </ion-col>
-        </ion-router-link>
-        <ion-router-link href="/blogs">
-          <ion-col class="app-home-item app-home-item-blogs app-background-color-blauw">
-            <div>
-              <img src="assets/img/groepen-blauw.svg" />
-              <p>Groepsblogs</p>
-            </div>
-          </ion-col>
-        </ion-router-link>
+        <ion-col router-link="/actueel" class="app-home-item app-home-item-actueel app-background-color-rood">
+          <div>
+            <img src="assets/img/actueel-rood.svg" />
+            <p>Actueel</p>
+          </div>
+        </ion-col>
+        <ion-col router-link="/blogs" class="app-home-item app-home-item-blogs app-background-color-blauw">
+          <div>
+            <img src="assets/img/groepen-blauw.svg" />
+            <p>Groepsblogs</p>
+          </div>
+        </ion-col>
       </ion-row>
       <ion-row>
-        <ion-router-link href="/kalender">
-          <ion-col class="app-home-item app-home-item-kalender app-background-color-grijs">
-            <div>
-              <img src="assets/img/kalender-grijs.svg" />
-              <p>Kalender</p>
-            </div>
-          </ion-col>
-        </ion-router-link>
-        <ion-router-link href="/fotos">
-          <ion-col class="app-home-item app-home-item-fotos app-background-color-geel">
-            <div>
-              <img src="assets/img/fotos-geel.svg" />
-              <p>Foto's</p>
-            </div>
-          </ion-col>
-        </ion-router-link>
+        <ion-col router-link="/kalender" class="app-home-item app-home-item-kalender app-background-color-grijs">
+          <div>
+            <img src="assets/img/kalender-grijs.svg" />
+            <p>Kalender</p>
+          </div>
+        </ion-col>
+        <ion-col router-link="/fotos" class="app-home-item app-home-item-fotos app-background-color-geel">
+          <div>
+            <img src="assets/img/fotos-geel.svg" />
+            <p>Foto's</p>
+          </div>
+        </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="app-home-profiel">
-          <ion-router-link href="/profiel">
+        <ion-col router-link="/profiel" class="app-home-profiel">
             <schoool-icon name="profiel" class="app-color-blauw"></schoool-icon>
-            Profiel
-          </ion-router-link>
+            <ion-label color="primary">Profiel</ion-label>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
+  </ion-page>
 </template>
 
 
@@ -67,9 +57,6 @@ import { defineComponent } from 'vue';
 import { mapGetters,mapActions } from 'vuex';
 export default defineComponent({
   name: 'Home',
-  data: function() {
-    return {}
-  },
 
   created() {
     this.loadSchool('Develop_2.0');

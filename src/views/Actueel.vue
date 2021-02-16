@@ -1,5 +1,5 @@
 <template>
-  <div class="ion-page" id="main-content">
+  <ion-page>
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
@@ -28,7 +28,7 @@
       </ion-infinite-scroll>
       <schoool-load-more v-else :more="false"></schoool-load-more>
     </ion-content>
-  </div>
+  </ion-page>
 </template>
 
 <script>
