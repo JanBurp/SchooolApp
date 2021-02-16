@@ -44,7 +44,7 @@ ion-title, ion-menu-button {
 }
 
 ion-icon {
-  --color: var(--app-color-geel);
+  color: var(--app-color-blauw);
 }
 
 /* MENU - ITEMS */

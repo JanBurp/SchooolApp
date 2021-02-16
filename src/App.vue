@@ -4,10 +4,11 @@
       <ion-list>
 
         <template v-for="(route,index) in menu" :key="index">
+
           <ion-item :color="itemClass(route)" button :detail="false">
             <schoool-icon v-if="route.meta.icon" :name="route.meta.icon" :class="iconClass(route)"></schoool-icon>
             <ion-label><ion-router-link :href="route.path">{{route.meta.title}}</ion-router-link></ion-label>
-            <schoool-icon v-if="route.meta.has_sub" name="onder" :class="iconClass(route)" @click="openSub(index)"></schoool-icon>
+            <icon v-if="route.meta.has_sub" :name="submenuIcon(index)" @click="openSub(index)"></icon>
           </ion-item>
 
           <ion-list v-if="route.sub" :id="'sub-'+index" class="sub-menu" :class="subMenuClass(index)">
@@ -38,7 +39,6 @@ export default defineComponent({
   },
 
   mounted() {
-    // console.log(this.currentRoute, this.routes);
   },
 
   computed : {
@@ -113,6 +113,15 @@ export default defineComponent({
       else {
         this.openSubs.push(id);
       }
+    },
+
+    submenuIcon(index) {
+      let id = 'sub-'+index;
+      let idx = this.openSubs.indexOf(id);
+      if (idx>=0) {
+        return 'chevron-up-outline';
+      }
+      return 'chevron-down-outline';
     },
 
     subMenuClass(index) {
