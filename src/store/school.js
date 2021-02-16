@@ -6,7 +6,6 @@ const getHash = function(code) {
     return hash;
 }
 
-
 export default {
     namespaced: true,
     state: {
@@ -16,7 +15,20 @@ export default {
         b_demo: false,
         url_url: '',
         media_logo: '',
-        rgb_achtergrond: '',
+
+        name:'',
+        logo: {},
+        rgb_achtergrond:'',
+        rgb_highlight:'',
+        rgb_kop:'',
+        rgb_link:'',
+        rgb_tekst:'',
+
+        actueel_types:[],
+        groepen:[],
+
+        disclaimer_text:'',
+        disclaimer_title:'',
     },
 
     getters : {
@@ -28,6 +40,40 @@ export default {
         getLogo(state) {
             return state.media_logo;
         },
+
+        getActueelTypes(state) {
+            return state.actueel_types;
+        },
+
+        getActueelTypeTitle : (state) => (id_type) => {
+            let idx = state.actueel_types.findIndex( i=>i.id==id_type );
+            if (idx>=0) {
+                return state.actueel_types[idx].str_title;
+            }
+            return '';
+        },
+
+        getGroepen(state) {
+            return state.groepen;
+        },
+
+        getGroepTitleById : (state) => (id_groep) => {
+            let idx = state.groepen.findIndex( i=>i.id==id_groep );
+            if (idx>=0) {
+                return state.groepen[idx].str_title;
+            }
+            return '';
+        },
+
+        getGroepTitleByUri : (state) => (groep) => {
+            let idx = state.groepen.findIndex( i=>i.uri==groep );
+            if (idx>=0) {
+                return state.groepen[idx].str_title;
+            }
+            return '<no name found>';
+        },
+
+
     },
 
     mutations: {
@@ -39,9 +85,29 @@ export default {
             state.media_logo = data.media_logo;
             state.rgb_achtergrond = data.rgb_achtergrond;
         },
+
+        _setSchoolInfo(state,data) {
+            state.name = data.name;
+            state.logo = data.logo;
+            state.rgb_achtergrond = data.rgb_achtergrond;
+            state.rgb_highlight = data.rgb_highlight;
+            state.rgb_kop = data.rgb_kop;
+            state.rgb_link = data.rgb_link;
+            state.rgb_tekst = data.rgb_tekst;
+            state.actueel_types = data.actueel_types;
+            state.groepen = data.groepen;
+            state.disclaimer_text = data.disclaimer_text;
+            state.disclaimer_title = data.disclaimer_title;
+        },
+
+        // _setGroepen(state,data) {
+        //     state.groepen = data;
+        // },
+
     },
 
     actions: {
+
         loadSchool({commit},code) {
             let hash = getHash(code);
             return window.Api.get( 'https://schoool.nl/_api/school?hash='+hash ).then(function(response){
@@ -52,8 +118,29 @@ export default {
             }).catch(function(error){
               return Promise.reject(error);
             });
-
-
         },
+
+        loadSchoolInfo({commit}) {
+            return window.Api.get( '/schoolbase_info' ).then(function(response){
+              if (response.data.success) {
+                commit('_setSchoolInfo',response.data.data);
+              }
+              return Promise.resolve(response);
+            }).catch(function(error){
+              return Promise.reject(error);
+            });
+        },
+
+        // loadGroepen({commit}) {
+        //     return window.Api.get( '/schoolbase_groepen_info' ).then(function(response){
+        //       if (response.data.success) {
+        //         commit('_setGroepen',response.data.data);
+        //       }
+        //       return Promise.resolve(response);
+        //     }).catch(function(error){
+        //       return Promise.reject(error);
+        //     });
+        // },
+
     },
 }

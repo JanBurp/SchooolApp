@@ -1,5 +1,17 @@
 export const itemsMixin = {
+
+  data : function(){
+    return {
+      id_type : false,
+    };
+  },
+
+  mounted() {
+    this.id_type = this.$route.params.id_type;
+  },
+
   methods: {
+
     loadNext(event) {
       this.loadMore().then(function(){
         event.target.complete();

@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Groepsblogs</ion-title>
+        <ion-title>{{title}}</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -14,7 +14,7 @@
         <ion-card class="schoool-card" v-for="item in items" :key="item.id">
           <ion-card-header>
             <ion-card-title>{{item.str_title}}</ion-card-title>
-            <schoool-item-groep>{{item.groep}}</schoool-item-groep>
+            <schoool-item-groep>{{groepsTitle(item.groep)}}</schoool-item-groep>
             <schoool-item-date>{{item.dat_date}}</schoool-item-date>
           </ion-card-header>
           <ion-card-content>
@@ -49,9 +49,25 @@ export default defineComponent({
   computed : {
     ...mapGetters('blogs',{
       noItems : 'noItems',
-      items : 'getItems',
+      getItems : 'getItems',
       loadedAll : 'loadedAll',
     }),
+    ...mapGetters('school',{
+      getGroepTitleByUri : 'getGroepTitleByUri',
+      getGroepTitleById : 'getGroepTitleById',
+    }),
+
+    items() {
+      return this.getItems(this.id_type);
+    },
+
+    title() {
+      if (!isNaN(this.id_type)) {
+        return this.getGroepTitleById(this.id_type);
+      }
+      return 'Groepsblog';
+    },
+
   },
 
   methods: {
@@ -62,6 +78,10 @@ export default defineComponent({
       loadData: 'loadData',
       loadMore: 'loadMore',
     }),
+
+    groepsTitle(groep) {
+      return this.getGroepTitleByUri(groep);
+    },
 
   },
 

@@ -55,6 +55,9 @@ ion-menu {
 ion-menu ion-label {
   text-align:center;
 }
+ion-menu ion-label.active ion-router-link {
+  color:var(--app-color-rood)!important;
+}
 ion-menu ion-item {
   --padding-start:0;
   --border-color: var(--app-color-grijs) !important;

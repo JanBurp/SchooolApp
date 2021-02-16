@@ -16,25 +16,31 @@ const routes = [
     component: () => import('@/views/Home.vue'),
   },
   {
-    path: '/actueel',
+    path: '/actueel/:id_type?',
     name: 'actueel',
     meta: {
       title :'Actueel',
       icon: 'actueel',
       order: 10,
+      has_sub : true,
     },
     component: () => import('@/views/Actueel.vue'),
   },
+    // Sub actueel_types
+
   {
-     path: '/blogs',
+     path: '/blogs/:id_type?',
      name: 'blogs',
      meta: {
        title :'Groepsblogs',
        icon: 'blog',
        order: 20,
+       has_sub : true,
      },
      component: () => import('@/views/Blogs.vue'),
   },
+    // Sub - groepen
+
   {
      path: '/kalender',
      name: 'kalender',
@@ -98,7 +104,8 @@ const routes = [
        component: () => import('@/views/Adres.vue'),
     },
 
-]
+];
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

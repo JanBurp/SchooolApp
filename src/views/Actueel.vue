@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Actueel</ion-title>
+        <ion-title>{{title}}</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -47,9 +47,24 @@ export default defineComponent({
   computed : {
     ...mapGetters('actueel',{
       noItems : 'noItems',
-      items : 'getItems',
+      getItems : 'getItems',
       loadedAll : 'loadedAll',
     }),
+    ...mapGetters('school',{
+      getActueelTypeTitle : 'getActueelTypeTitle',
+    }),
+
+    items() {
+      return this.getItems(this.id_type);
+    },
+
+    title() {
+      if (!isNaN(this.id_type)) {
+        return this.getActueelTypeTitle(this.id_type);
+      }
+      return 'Actueel';
+    },
+
   },
 
   methods: {
