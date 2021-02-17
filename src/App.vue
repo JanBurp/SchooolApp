@@ -7,6 +7,7 @@
             <schoool-icon v-if="route.meta.icon" :name="route.meta.icon" :class="iconClass(route)"></schoool-icon>
             <ion-label @click="navigate(url(route.path))">{{route.meta.title}}</ion-label>
             <icon v-if="route.meta.has_sub" :name="submenuIcon(index)" @click="openSub(index)"></icon>
+            <icon v-else name="nop"></icon>
           </ion-item>
           <ion-list v-if="route.sub" :id="'sub-'+index" class="sub-menu" :class="subMenuClass(index)">
             <ion-item v-for="(route,index) in route.sub" :key="index" :color="itemClass(route)" button :detail="false">

@@ -19,6 +19,9 @@
 
     computed : {
       src() {
+        if (this.name=='nop') {
+          return '';
+        }
         return 'assets/svg/'+this.name+'.svg';
       },
     },
