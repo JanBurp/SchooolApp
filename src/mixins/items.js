@@ -35,11 +35,14 @@ export const itemsMixin = {
     },
 
     hasImage(item) {
-      return (item.carousel.length>0);
+      return (item.carousel && item.carousel.length>0);
     },
 
     firstImage(item) {
-      return item.carousel[0];
+      if (this.hasImage(item)) {
+        return item.carousel[0];
+      }
+      return false;
     },
 
     thumbImage(item) {

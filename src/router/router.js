@@ -26,7 +26,18 @@ const routes = [
     },
     component: () => import('@/views/Actueel.vue'),
   },
-    // Sub actueel_types
+  // Sub actueel_types
+  {
+    path: '/actueel_item/:id/:id_type?',
+    name: 'actueel_item',
+    meta: {
+      title :'Actueel Item',
+      hidden : true,
+    },
+    component: () => import('@/views/ActueelItem.vue'),
+  },
+
+
 
   {
      path: '/blogs',

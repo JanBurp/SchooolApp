@@ -39,6 +39,14 @@ export default {
         return items;
       },
 
+      getItemById : (state) => (id) => {
+        let idx = state.items.findIndex( i=>i.id==id );
+        if (idx>=0) {
+          return state.items[idx];
+        }
+        return false;
+      },
+
     },
 
     mutations: {

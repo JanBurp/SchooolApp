@@ -48,7 +48,7 @@ export default defineComponent({
 
     menu() {
       let routes = this.$router.getRoutes();
-      routes = routes.filter( r => r.path!=='/' );
+      routes = routes.filter( r => (r.path!=='/' && !r.meta.hidden) );
       routes = window._.sortBy(routes,'meta.order');
 
       let menu = routes.filter( r => !r.meta.is_sub );

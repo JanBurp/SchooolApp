@@ -90,3 +90,7 @@ ion-card-title {
   margin:0;
   border-bottom: 1px solid var(--app-color-grijs);
 }
+.schoool-card-item {
+  border:none;
+}
+
