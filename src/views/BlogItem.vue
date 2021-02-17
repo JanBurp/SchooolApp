@@ -12,7 +12,7 @@
       <ion-card class="schoool-card schoool-card-item">
         <ion-card-header>
           <ion-card-title>{{item.str_title}}</ion-card-title>
-          <schoool-item-category>{{item.type}}</schoool-item-category>
+          <schoool-item-groep>{{groepsTitle(item.groep)}}</schoool-item-groep>
           <schoool-item-date>{{item.dat_date}}</schoool-item-date>
         </ion-card-header>
         <ion-card-content>
@@ -33,38 +33,43 @@ import { defineComponent } from 'vue';
 import { mapGetters,mapMutations,mapActions } from 'vuex';
 import {itemsMixin} from "../mixins/items";
 export default defineComponent({
-  name: 'ActueelItem',
+  name: 'BlogItem',
   mixins : [itemsMixin],
 
   created() {
-    this.setType('actueel');
+    this.setType('blogs');
     this.loadData();
   },
 
   computed : {
-    ...mapGetters('actueel',{
+    ...mapGetters('blogs',{
       getItemById : 'getItemById',
     }),
     ...mapGetters('school',{
-      getActueelTypeTitle : 'getActueelTypeTitle',
+        getGroepTitleByUri : 'getGroepTitleByUri',
+        getGroepTitleById : 'getGroepTitleById',
     }),
 
     title() {
-      if (!isNaN(this.itemIdType) && this.itemIdType!='') {
-        return this.getActueelTypeTitle(this.itemIdType);
+      if (!isNaN(this.itemIdType)) {
+        return this.getGroepTitleById(this.itemIdType);
       }
-      return 'Actueel';
+      return 'Groepsblog';
     },
 
   },
 
   methods: {
-    ...mapMutations('actueel',{
+    ...mapMutations('blogs',{
       setType: 'setType',
     }),
-    ...mapActions('actueel',{
+    ...mapActions('blogs',{
       loadData: 'loadData',
     }),
+
+    groepsTitle(groep) {
+      return this.getGroepTitleByUri(groep);
+    },
 
   },
 

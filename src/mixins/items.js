@@ -16,6 +16,22 @@ export const itemsMixin = {
     }
   },
 
+  computed : {
+
+    itemId() {
+      return this.$route.params.id;
+    },
+
+    itemIdType() {
+      return this.$route.params.id_type;
+    },
+
+    item() {
+      return this.getItemById(this.itemId);
+    },
+
+  },
+
   methods: {
 
     setTypeId() {
@@ -49,6 +65,9 @@ export const itemsMixin = {
       return item.src_thumb;
     },
 
+    closeItem() {
+      this.$router.go(-1);
+    },
 
   },
 };

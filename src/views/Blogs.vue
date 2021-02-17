@@ -11,7 +11,7 @@
     <ion-content>
       <schoool-nocontent v-if="noItems"></schoool-nocontent>
       <template v-else>
-        <ion-card class="schoool-card" v-for="item in items" :key="item.id">
+        <ion-card class="schoool-card" v-for="item in items" :key="item.id"  @click="openItem(item)">
           <ion-card-header>
             <ion-card-title>{{item.str_title}}</ion-card-title>
             <schoool-item-groep>{{groepsTitle(item.groep)}}</schoool-item-groep>
@@ -19,7 +19,7 @@
           </ion-card-header>
           <ion-card-content>
             <schoool-item-image v-if="hasImage(item)" :image="firstImage(item)"></schoool-item-image>
-            <schoool-item-text :text="item.txt_text"></schoool-item-text>
+            <schoool-item-text :text="item.txt_text" :small="true"></schoool-item-text>
           </ion-card-content>
         </ion-card>
       </template>
@@ -62,7 +62,7 @@ export default defineComponent({
     },
 
     title() {
-      if (!isNaN(this.id_type)) {
+      if (!isNaN(this.id_type) && this.id_type!='') {
         return this.getGroepTitleById(this.id_type);
       }
       return 'Groepsblog';
@@ -81,6 +81,10 @@ export default defineComponent({
 
     groepsTitle(groep) {
       return this.getGroepTitleByUri(groep);
+    },
+
+    openItem(item) {
+      this.$router.push({name:'blog_item',params:{ id:item.id, id_type:this.id_type }});
     },
 
   },

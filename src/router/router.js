@@ -38,7 +38,6 @@ const routes = [
   },
 
 
-
   {
      path: '/blogs',
      name: 'blogs',
@@ -50,7 +49,17 @@ const routes = [
      },
      component: () => import('@/views/Blogs.vue'),
   },
-    // Sub - groepen
+  // Sub - groepen
+  {
+    path: '/blog_item/:id/:id_type?',
+    name: 'blog_item',
+    meta: {
+      title :'Blog Item',
+      hidden : true,
+    },
+    component: () => import('@/views/BlogItem.vue'),
+  },
+
 
   {
      path: '/kalender',

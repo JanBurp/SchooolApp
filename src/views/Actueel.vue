@@ -80,7 +80,6 @@ export default defineComponent({
       this.$router.push({name:'actueel_item',params:{ id:item.id, id_type:this.id_type }});
     },
 
-
   },
 
 });

@@ -16,7 +16,7 @@
     },
     computed : {
       html() {
-        if (this.small) {
+        if (this.small && this.text.length>270) {
           let html = this.text;
           html = html.replace(/<(.|\n)*?>/g, ' ');
           let words = html.split(' ');
