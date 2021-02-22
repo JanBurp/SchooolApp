@@ -1,5 +1,5 @@
 <template>
-  <div class="ion-page" id="main-content">
+  <ion-page id="main-content">
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
@@ -8,18 +8,16 @@
         <ion-title>Privacy</ion-title>
       </ion-toolbar>
     </ion-header>
-  </div>
-  <ion-content>
-    <schoool-nocontent></schoool-nocontent>
-  </ion-content>
+    <ion-content>
+      <schoool-nocontent></schoool-nocontent>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 export default defineComponent({
-  name: 'Home',
-  data: function() {
-  },
+  name: 'Privacy',
 });
 </script>
 

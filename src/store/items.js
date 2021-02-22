@@ -27,10 +27,24 @@ export default {
         return state.loadedAll;
       },
 
-      getItems(state) {
+      getItems : (state) => (id_type) => {
         let items = window._.sortBy(state.items,'dat_date');
+        if ( !isNaN(id_type) && id_type!='' && state.type=='actueel') {
+          items = items.filter( i => i.id_actueel_type==id_type);
+        }
+        if ( !isNaN(id_type) && id_type!='' && state.type=='blogs') {
+          items = items.filter( i => i.id_groepen==id_type);
+        }
         items.reverse();
         return items;
+      },
+
+      getItemById : (state) => (id) => {
+        let idx = state.items.findIndex( i=>i.id==id );
+        if (idx>=0) {
+          return state.items[idx];
+        }
+        return false;
       },
 
     },
@@ -62,9 +76,8 @@ export default {
     actions: {
 
       loadData({commit,state}) {
-        // console.log(state.info.totals);
-        if (state.info.totals>0) {
-          return new Promise.resolve(state.items);
+        if (state.info && state.info.totals>0) {
+          return true;
         }
         return window.Api.get( type[state.type].loadUrl ).then(function(response){
           if (response.data.success) {

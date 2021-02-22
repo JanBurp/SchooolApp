@@ -4,9 +4,7 @@ require('./globals.js');
 import { createApp } from 'vue'
 import { IonicVue } from '@ionic/vue';
 import App from './App.vue'
-import router from './router/router.js';
 import {store} from './store/store.js';
-
 
 // Global API
 window.Api = {
@@ -120,6 +118,7 @@ import {
   IonMenu,
   IonMenuButton,
   IonMenuToggle,
+  IonPage,
   IonRouterOutlet,
   IonRow,
   IonSlide,
@@ -152,15 +151,57 @@ import './theme/variables.css';
 import './theme/schoool-icons.css';
 import './theme/app.css';
 
+/* Router */
+import router from './router/router.js';
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(store);
 
-router.isReady().then(() => {
-  app.mount('#app');
+/* Add dynamic routes (actueel/blog) */
+store.dispatch('school/loadSchoolInfo').then(function(){
+
+  // actueel
+  let types = store.getters['school/getActueelTypes'];
+  for (var i = 0; i < types.length; i++) {
+    let item = types[i];
+    let subRoute = {
+      path: '/actueel/'+item['id'],
+      name: 'actueel_'+item['uri'],
+      meta: {
+       title :item['str_title'],
+       order: 11 + i,
+       is_sub : 'actueel',
+      },
+      component: () => import('@/views/Actueel.vue'),
+    };
+    router.addRoute(subRoute);
+  }
+
+  // blog
+  let groepen = store.getters['school/getGroepen'];
+  for ( i = 0; i < groepen.length; i++) {
+    let item = groepen[i];
+    let subRoute = {
+      path: '/blogs/'+item['id'],
+      name: 'blogs_'+item['uri'],
+      meta: {
+       title :item['str_title'],
+       order: 21 + i,
+       is_sub : 'blogs',
+      },
+      component: () => import('@/views/Blogs.vue'),
+    };
+    router.addRoute(subRoute);
+  }
+
+  /* Routes ready -> mount app */
+  router.isReady().then(() => {
+    app.mount('#app');
+  });
 });
+
 
 // Register all Ion components
 app.component('ion-app',IonApp);
@@ -183,6 +224,7 @@ app.component('ion-list',IonList);
 app.component('ion-menu',IonMenu);
 app.component('ion-menu-button',IonMenuButton);
 app.component('ion-menu-toggle',IonMenuToggle);
+app.component('ion-page',IonPage);
 app.component('ion-router-outlet',IonRouterOutlet);
 app.component('ion-row',IonRow);
 app.component('ion-slide',IonSlide);
