@@ -5,7 +5,7 @@
 Hieronder de stappen die nodig zijn om de app lokaal te instaleren en testen in de browser.
 
 ### Je moet Node.js hebben geïnstalleerd.
-Dat kun je testen door de terminal te openen en op de command line te type:
+Dat kun je testen door de terminal te openen en op de command line te typen:
 
   `node --version`
 
@@ -16,9 +16,9 @@ Download en installeer Node.js: [https://nodejs.org/en/download/](url)
 
 ### Installeer de App
 
-Maak een map aan en pak de SchooolAppTest_xxx.zip daar uit
-Open de Terminal in die map. Dat kan in macOS door op de map te staan, rechtermuisknop en dan onderaan 'Nieuw terminal venster bij...' te kiezen
-Typ nu in de Terminal:
+Maak een map aan en pak de SchooolAppTest_xxx.zip daar uit.
+Open de Terminal in die map. Dat kan in macOS door op de map te staan, rechtermuisknop en dan onderaan 'Nieuw terminal venster bij...' te kiezen.
+Type nu in de Terminal:
 
   `npm install`
 
@@ -27,7 +27,7 @@ Als je EACCES fouten krijgt, volg dan eerste deze stappen: [https://ionicframewo
 
 ### Run de App
 
-Open de Terminal in de map waar je de App in hebt geïnstalleerd. Typ dan:
+Open de Terminal in de map waar je de App in hebt geïnstalleerd. Type dan:
 
   `ionic serve`
 
