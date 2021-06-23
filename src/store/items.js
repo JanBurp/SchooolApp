@@ -65,6 +65,7 @@ export default {
         state.args = data.args;
         state.info = data.info;
         state.items = [...state.items,...data.data];
+        state.items = state.items.filter((e, i) => state.items.findIndex(a => a['id'] === e['id']) === i); // unique
         if (data.data.length==0) {
           state.loadedAll =  true;
         }
@@ -89,18 +90,18 @@ export default {
         });
       },
 
-      loadMore({commit,state}) {
-        let start = state.args.start - window.CONSTANTS.TIME_MONTH;
-        let end   = state.args.start;
+        loadMore({commit,state}) {
+            let start = state.args.start - window.CONSTANTS.TIME_MONTH;
+            let end   = state.args.start;
 
-        return window.Api.get( type[state.type].loadUrl + '?start='+start+'&end='+end).then(function(response){
-          if (response.data.success) {
-            commit('_addData',response.data);
-          }
-          return Promise.resolve(response);
-        }).catch(function(error){
-          return Promise.reject(error);
-        });
+            return window.Api.get( type[state.type].loadUrl + '?start='+start+'&end='+end).then(function(response){
+              if (response.data.success) {
+                commit('_addData',response.data);
+              }
+              return Promise.resolve(response);
+            }).catch(function(error){
+              return Promise.reject(error);
+            });
       }
 
     },
