@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import {CONFIG} from '../services/globals.js';
+  import {CONFIG} from '../services/globals.ts';
   export default {
     props : {
       image : Object,

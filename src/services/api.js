@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-import {CONFIG} from './globals.js';
+import {CONFIG} from './globals.ts';
 
 var axios = require('axios');
 axios.defaults.headers.common['Content-Type'] = 'application/json';

@@ -37,10 +37,10 @@ const app = createApp(App)
 store.dispatch('school/loadSchoolInfo').then(function(){
 
     // actueel
-    let types = store.getters['school/getActueelTypes'];
-    for (var i = 0; i < types.length; i++) {
-        let item = types[i];
-        let subRoute = {
+    const types:any[] = store.getters['school/getActueelTypes'];
+    for (let i = 0; i < types.length; i++) {
+        const item = types[i];
+        const subRoute = {
             path: '/actueel/'+item['id'],
             name: 'actueel_'+item['uri'],
             meta: {
@@ -54,10 +54,10 @@ store.dispatch('school/loadSchoolInfo').then(function(){
     }
 
     // blog
-    let groepen = store.getters['school/getGroepen'];
-    for ( i = 0; i < groepen.length; i++) {
-        let item = groepen[i];
-        let subRoute = {
+    const groepen:any[] = store.getters['school/getGroepen'];
+    for (let i = 0; i < groepen.length; i++) {
+        const item = groepen[i];
+        const subRoute = {
             path: '/blogs/'+item['id'],
             name: 'blogs_'+item['uri'],
             meta: {
@@ -109,9 +109,9 @@ app.component('ion-title',IonTitle);
 app.component('ion-toolbar',IonToolbar);
 
 // Register all App components
-let componentFiles = require.context('./components', true, /\.vue$/i);
-componentFiles.keys().map(function(key){
-    var name = key.split('/').pop().split('.')[0];
+const componentFiles = require.context('./components', true, /\.vue$/i);
+componentFiles.keys().map(function(key:any){
+    const name = key.split('/').pop().split('.')[0];
     app.component(name, componentFiles(key).default);
 });
 

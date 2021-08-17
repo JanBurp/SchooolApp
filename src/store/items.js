@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-import {TIMES} from '../services/globals.js';
+import {TIMES} from '../services/globals.ts';
 import Api from '../services/api.js';
 
 const type = {

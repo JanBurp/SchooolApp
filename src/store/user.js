@@ -1,5 +1,5 @@
 import { Storage } from '@capacitor/storage';
-import Api from '../services/api.js';
+// import Api from '../services/api.js';
 
 // const setScholen = async (data) => {
 //   await Storage.set({

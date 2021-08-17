@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import {CONFIG} from '../services/globals.js';
+import {CONFIG} from '../services/globals.ts';
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'Kalender',
