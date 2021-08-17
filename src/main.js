@@ -77,10 +77,9 @@ store.dispatch('school/loadSchoolInfo').then(function(){
 });
 
 
+
 // Register all Ion components globaly
 import {IonApp,IonButtons,IonCard,IonCardContent,IonCardHeader,IonCardTitle,IonCol,IonContent,IonGrid,IonHeader,IonIcon,IonImg,IonInfiniteScroll,IonInfiniteScrollContent,IonItem,IonLabel,IonList,IonMenu,IonMenuButton,IonMenuToggle,IonPage,IonRouterOutlet,IonRow,IonSlide,IonSlides,IonTitle,IonToolbar,} from '@ionic/vue';
-// const ionComponents = ['IonApp','IonButtons','IonCard','IonCardContent','IonCardHeader','IonCardTitle','IonCol','IonContent','IonGrid','IonHeader','IonIcon','IonImg','IonInfiniteScroll','IonInfiniteScrollContent','IonItem','IonLabel','IonList','IonMenu','IonMenuButton','IonMenuToggle','IonPage','IonRouterOutlet','IonRow','IonSlide','IonSlides','IonTitle','IonToolbar'];
-
 app.component('ion-app',IonApp);
 app.component('ion-buttons',IonButtons);
 app.component('ion-card',IonCard);
