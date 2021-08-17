@@ -1,4 +1,5 @@
 import { Storage } from '@capacitor/storage';
+import Api from '../services/api.js';
 
 // const setScholen = async (data) => {
 //   await Storage.set({
@@ -80,7 +81,7 @@ export default {
 
 
         // loadSchools({commit}) {
-        //     return window.Api.get( 'https://schoool.nl/_api/scholen' ).then(function(response){
+        //     return Api.get( 'https://schoool.nl/_api/scholen' ).then(function(response){
         //         if (response.data.success) {
         //             console.log('RESPONSE',response.data);
         //             commit('_setScholen',response.data.data);

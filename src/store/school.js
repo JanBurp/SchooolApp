@@ -1,3 +1,6 @@
+import Api from '../services/api.js';
+
+
 const md5 = require('js-md5');
 
 const getHash = function(code) {
@@ -119,7 +122,7 @@ export default {
                 return true;
             }
             let hash = getHash(code);
-            return window.Api.get( 'https://schoool.nl/_api/school?hash='+hash ).then(function(response){
+            return Api.get( 'https://schoool.nl/_api/school?hash='+hash ).then(function(response){
               if (response.data.success) {
                 commit('_setSchool',response.data.data);
               }
@@ -133,7 +136,7 @@ export default {
             if (state.infoLoaded) {
                 return true;
             }
-            return window.Api.get( '/schoolbase_info' ).then(function(response){
+            return Api.get( '/schoolbase_info' ).then(function(response){
               if (response.data.success) {
                 commit('_setSchoolInfo',response.data.data);
               }

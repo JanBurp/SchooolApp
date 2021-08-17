@@ -1,3 +1,5 @@
+import Api from '../services/api.js';
+
 const type = {
     actueel : { loadUrl: '/schoolbase_nieuws' },
     blogs   : { loadUrl: '/schoolbase_groepen' },
@@ -81,7 +83,7 @@ export default {
             if (state.info && state.info.totals>0) {
                 return true;
             }
-            return window.Api.get( type[state.type].loadUrl ).then(function(response){
+            return Api.get( type[state.type].loadUrl ).then(function(response){
                 if (response.data.success) {
                     commit('_setData',response.data);
                 }
@@ -98,7 +100,7 @@ export default {
             }
             let end   = state.args.start;
 
-            return window.Api.get( type[state.type].loadUrl + '?start='+start+'&end='+end).then(function(response){
+            return Api.get( type[state.type].loadUrl + '?start='+start+'&end='+end).then(function(response){
                 if (response.data.success) {
                     commit('_addData',response.data);
                 }
