@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import {CONFIG} from '../services/globals.js';
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'Kalender',
@@ -27,7 +28,7 @@ export default defineComponent({
 
   computed : {
     url() {
-      return window.kalender_url;
+      return CONFIG.kalender_url;
     }
   },
 

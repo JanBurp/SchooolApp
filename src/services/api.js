@@ -1,7 +1,9 @@
+import {CONFIG} from './globals.js';
+
 var axios = require('axios');
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 // window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.headers.common['Authorization'] = window.token;
+axios.defaults.headers.common['Authorization'] = CONFIG.token;
 
 
 export default {
@@ -57,7 +59,7 @@ export default {
 
     call : function(request) {
         if (request.url.substr(0,4)!=='http') {
-            request.url = window.api_url + request.url;
+            request.url = CONFIG.api_url + request.url;
         }
         request.crossdomain = true;
         request.transformResponse = function(data) {

@@ -1,3 +1,4 @@
+import {TIMES} from '../services/globals.js';
 import Api from '../services/api.js';
 
 const type = {
@@ -94,9 +95,9 @@ export default {
         },
 
         loadMore({commit,state}) {
-            let start = state.args.start - window.CONSTANTS.TIME_MONTH;
+            let start = state.args.start - TIMES.TIME_MONTH;
             if (state.type!=='fotos') {
-                start = state.args.start - window.CONSTANTS.TIME_MONTH * 2;
+                start = state.args.start - TIMES.TIME_MONTH * 2;
             }
             let end   = state.args.start;
 
