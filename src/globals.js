@@ -1,4 +1,5 @@
 // Settings
+window.schoool_url = 'https://schoool.nl/_api/scholen';
 window.base_url = 'http://develop_schoool.test';
 window.api_url = window.base_url + '/_api';
 window.kalender_url = window.base_url + '/_agenda';
