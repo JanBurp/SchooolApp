@@ -26,7 +26,7 @@ import './theme/app.css';
 
 
 /* Router */
-import router from './router/router.js';
+import router from './router/router';
 
 const app = createApp(App)
     .use(IonicVue)
