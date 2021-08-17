@@ -1,54 +1,16 @@
-require('./services/globals.js');
-
-var _ = require('lodash');
-
 // App & Vue
 import { createApp } from 'vue'
 import { IonicVue } from '@ionic/vue';
 import App from './App.vue'
+
 import {store} from './store/store.js';
-
-
-// Register all Ion components
-import {
-  IonApp,
-  IonButtons,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
-  IonCol,
-  IonContent,
-  IonGrid,
-  IonHeader,
-  IonIcon,
-  IonImg,
-  IonInfiniteScroll,
-  IonInfiniteScrollContent,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonMenu,
-  IonMenuButton,
-  IonMenuToggle,
-  IonPage,
-  IonRouterOutlet,
-  IonRow,
-  IonSlide,
-  IonSlides,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/vue';
-
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
-
 /* Basic CSS for apps built with Ionic */
 import '@ionic/vue/css/normalize.css';
 import '@ionic/vue/css/structure.css';
 import '@ionic/vue/css/typography.css';
-
 /* Optional CSS utils that can be commented out */
 import '@ionic/vue/css/padding.css';
 import '@ionic/vue/css/float-elements.css';
@@ -56,67 +18,69 @@ import '@ionic/vue/css/text-alignment.css';
 import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
-
 /* Theme variables */
 import './theme/variables.css';
-
 /* App Styling */
 import './theme/schoool-icons.css';
 import './theme/app.css';
+
 
 /* Router */
 import router from './router/router.js';
 
 const app = createApp(App)
-  .use(IonicVue)
-  .use(router)
-  .use(store);
+    .use(IonicVue)
+    .use(router)
+    .use(store);
 
 /* Add dynamic routes (actueel/blog) */
 store.dispatch('school/loadSchoolInfo').then(function(){
 
-  // actueel
-  let types = store.getters['school/getActueelTypes'];
-  for (var i = 0; i < types.length; i++) {
-    let item = types[i];
-    let subRoute = {
-      path: '/actueel/'+item['id'],
-      name: 'actueel_'+item['uri'],
-      meta: {
-       title :item['str_title'],
-       order: 11 + i,
-       is_sub : 'actueel',
-      },
-      component: () => import('@/views/Actueel.vue'),
-    };
-    router.addRoute(subRoute);
-  }
+    // actueel
+    let types = store.getters['school/getActueelTypes'];
+    for (var i = 0; i < types.length; i++) {
+        let item = types[i];
+        let subRoute = {
+            path: '/actueel/'+item['id'],
+            name: 'actueel_'+item['uri'],
+            meta: {
+                title :item['str_title'],
+                order: 11 + i,
+                is_sub : 'actueel',
+            },
+            component: () => import('@/views/Actueel.vue'),
+        };
+        router.addRoute(subRoute);
+    }
 
-  // blog
-  let groepen = store.getters['school/getGroepen'];
-  for ( i = 0; i < groepen.length; i++) {
-    let item = groepen[i];
-    let subRoute = {
-      path: '/blogs/'+item['id'],
-      name: 'blogs_'+item['uri'],
-      meta: {
-       title :item['str_title'],
-       order: 21 + i,
-       is_sub : 'blogs',
-      },
-      component: () => import('@/views/Blogs.vue'),
-    };
-    router.addRoute(subRoute);
-  }
+    // blog
+    let groepen = store.getters['school/getGroepen'];
+    for ( i = 0; i < groepen.length; i++) {
+        let item = groepen[i];
+        let subRoute = {
+            path: '/blogs/'+item['id'],
+            name: 'blogs_'+item['uri'],
+            meta: {
+                title :item['str_title'],
+                order: 21 + i,
+                is_sub : 'blogs',
+            },
+            component: () => import('@/views/Blogs.vue'),
+        };
+        router.addRoute(subRoute);
+    }
 
-  /* Routes ready -> mount app */
-  router.isReady().then(() => {
-    app.mount('#app');
-  });
+    /* Routes ready -> mount app */
+    router.isReady().then(() => {
+        app.mount('#app');
+    });
 });
 
 
-// Register all Ion components
+// Register all Ion components globaly
+import {IonApp,IonButtons,IonCard,IonCardContent,IonCardHeader,IonCardTitle,IonCol,IonContent,IonGrid,IonHeader,IonIcon,IonImg,IonInfiniteScroll,IonInfiniteScrollContent,IonItem,IonLabel,IonList,IonMenu,IonMenuButton,IonMenuToggle,IonPage,IonRouterOutlet,IonRow,IonSlide,IonSlides,IonTitle,IonToolbar,} from '@ionic/vue';
+// const ionComponents = ['IonApp','IonButtons','IonCard','IonCardContent','IonCardHeader','IonCardTitle','IonCol','IonContent','IonGrid','IonHeader','IonIcon','IonImg','IonInfiniteScroll','IonInfiniteScrollContent','IonItem','IonLabel','IonList','IonMenu','IonMenuButton','IonMenuToggle','IonPage','IonRouterOutlet','IonRow','IonSlide','IonSlides','IonTitle','IonToolbar'];
+
 app.component('ion-app',IonApp);
 app.component('ion-buttons',IonButtons);
 app.component('ion-card',IonCard);
@@ -148,8 +112,8 @@ app.component('ion-toolbar',IonToolbar);
 // Register all App components
 let componentFiles = require.context('./components', true, /\.vue$/i);
 componentFiles.keys().map(function(key){
-  var name = key.split('/').pop().split('.')[0];
-  app.component(name, componentFiles(key).default);
+    var name = key.split('/').pop().split('.')[0];
+    app.component(name, componentFiles(key).default);
 });
 
 

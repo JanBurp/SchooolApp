@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 import {CONFIG} from './globals.js';
 
 var axios = require('axios');
@@ -26,7 +28,7 @@ export default {
     },
 
     patch : function(url,id,data) {
-        if ( window._.isUndefined(data) && window._.isObject(id)) {
+        if ( _.isUndefined(data) && _.isObject(id)) {
             data = id;
         }
         else {

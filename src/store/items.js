@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 import {TIMES} from '../services/globals.js';
 import Api from '../services/api.js';
 
@@ -31,7 +33,7 @@ export default {
         },
 
         getItems : (state) => (id_type) => {
-            let items = window._.sortBy(state.items,'dat_date');
+            let items = _.sortBy(state.items,'dat_date');
             if ( !isNaN(id_type) && id_type!='' && state.type=='actueel') {
                 items = items.filter( i => i.id_actueel_type==id_type);
             }
