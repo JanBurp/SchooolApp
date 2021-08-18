@@ -1,8 +1,7 @@
+import {CONFIG} from '../services/globals.ts';
 import Api from '../services/api.js';
 
-
 const md5 = require('js-md5');
-
 const getHash = function(code) {
     let salt = Math.floor(new Date().getTime() / 86400000) + 3 ;
     let hash = md5(salt+code);
@@ -122,13 +121,14 @@ export default {
                 return true;
             }
             let hash = getHash(code);
-            return Api.get( 'https://schoool.nl/_api/school?hash='+hash ).then(function(response){
-              if (response.data.success) {
-                commit('_setSchool',response.data.data);
-              }
-              return Promise.resolve(response);
+            return Api.get( CONFIG.schoool_url+'school?hash='+hash ).then(function(response){
+                if (response.data.data) {
+                    commit('_setSchool',response.data.data);
+                    return Promise.resolve(response.data.data);
+                }
+                return Promise.reject();
             }).catch(function(error){
-              return Promise.reject(error);
+                return Promise.reject(error);
             });
         },
 

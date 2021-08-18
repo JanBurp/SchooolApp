@@ -3,14 +3,14 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 const routes = [
 	{
 		path: '/',
-		redirect: '/home',
-		// redirect: '/select_school'
+		// redirect: '/home',
+		redirect: '/select_school'
 	},
-	// {
-	//   path: '/select_school',
-	//   name: 'select_school',
-	//   component: () => import('@/views/SelectSchool.vue'),
-	// },
+	{
+		path: '/select_school',
+		name: 'select_school',
+		component: () => import('@/views/SelectSchool.vue'),
+	},
 
 
     {

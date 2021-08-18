@@ -2,18 +2,19 @@
 
 :root{
 
-  /* App specific */
-  --app-color-rood: #BA141F;
-  --app-color-blauw: #17B1D3;
-  --app-color-grijs: #3B3E49;
-  --app-color-lichtgrijs: #93979C;
-  --app-color-geel: #F6BE2F;
-  --app-color-zwart:#000;
-  --app-color-wit:#FFF;
+    /* App specific */
+    --app-color-rood: #BA141F;
+    --app-color-blauw: #17B1D3;
+    --app-color-grijs: #3B3E49;
+    --app-color-lichtgrijs: #93979C;
+    --app-color-geel: #F6BE2F;
+    --app-color-zwart:#000;
+    --app-color-wit:#FFF;
 
-  /* Ionic overrides */
-  --ion-color-primary: var(--app-color-blauw);
-  --ion-toolbar-background: var(--app-color-grijs);
+    /* Ionic overrides */
+    --ion-color-primary: var(--app-color-blauw);
+    --ion-toolbar-background: var(--app-color-grijs);
+
 }
 
 .app-color-rood { color: var(--app-color-rood)}
@@ -29,68 +30,79 @@
 .app-background-color-grijs { background-color: var(--app-color-grijs)}
 .app-background-color-lichtgrijs { background-color: var(--app-color-lichtgrijs)}
 .app-background-color-geel { background-color: var(--app-color-geel)}
-.app-background-color-zwart {color: var(--app-color-zwart)}
-.app-background-color-wit {color: var(--app-color-wit)}
+.app-background-color-zwart {background-color: var(--app-color-zwart)}
+.app-background-color-wit {background-color: var(--app-color-wit)}
 
 .circle {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 
 /* Ionic overrides */
 
 ion-title, ion-menu-button {
-  color:#FFF;
+    color:#FFF;
 }
 
 ion-icon {
-  color: var(--app-color-blauw);
+    color: var(--app-color-blauw);
 }
 
 /* MENU - ITEMS */
 ion-menu {
-  top:44px;
-  --width:100%;
+    top:44px;
+    --width:100%;
 }
 ion-menu ion-label {
-  text-align:center;
+    text-align:center;
 }
 ion-menu ion-label.active ion-router-link {
-  color:var(--app-color-rood)!important;
+    color:var(--app-color-rood)!important;
 }
 ion-menu ion-item {
-  --padding-start:0;
-  --border-color: var(--app-color-grijs) !important;
+    --padding-start:0;
+    --border-color: var(--app-color-grijs) !important;
 }
 ion-menu ion-item.ion-color-primary {
-  --ion-color-shade: var(--app-color-grijs) !important;
+    --ion-color-shade: var(--app-color-grijs) !important;
 }
 ion-menu ion-item.ion-color-primary * {color: var(--app-color-wit)}
 ion-menu ion-item .schoool-icon {
-  margin-left:.5rem;
+    margin-left:.5rem;
 }
 
 
 ion-list.sub-menu.closed {
-  height: 0;
-  padding-top:0;
-  padding-bottom:0;
+    height: 0;
+    padding-top:0;
+    padding-bottom:0;
 }
 
 
 /* CARDS */
 ion-card-title {
-  --color: var(--app-color-blauw);
+    --color: var(--app-color-blauw);
 }
 
 .schoool-card {
-  border:none;
-  border-radius: 0;
-  box-shadow:none;
-  margin:0;
-  border-bottom: 1px solid var(--app-color-grijs);
+    border:none;
+    border-radius: 0;
+    box-shadow:none;
+    margin:0;
+    border-bottom: 1px solid var(--app-color-grijs);
 }
 .schoool-card-item {
-  border:none;
+    border:none;
 }
 
+
+/* FORM */
+ion-input {
+    border-radius: 0.25rem;
+}
+.native-input {
+    padding: 0.45rem 0.5rem!important;
+}
+.form-button .button-native {
+    border-radius: 0.25rem!important;
+}

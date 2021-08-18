@@ -1,6 +1,6 @@
 
 const CONFIG = {
-    schoool_url  : 'https://schoool.nl/_api/scholen',
+    schoool_url  : 'https://schoool.nl/_api/',
     base_url     : 'http://develop_schoool.test',
     api_url      : '',
     kalender_url : '',

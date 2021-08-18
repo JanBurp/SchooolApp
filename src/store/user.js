@@ -1,18 +1,4 @@
 import { Storage } from '@capacitor/storage';
-// import Api from '../services/api.js';
-
-// const setScholen = async (data) => {
-//   await Storage.set({
-//     key: 'scholen',
-//     value: JSON.stringify(data),
-//   });
-// };
-
-// const getScholen = async () => {
-//   const { value } = await Storage.get({ key: 'scholen' });
-//   return JSON.parse(value);
-// };
-
 
 export default {
     namespaced: true,
@@ -61,8 +47,6 @@ export default {
             });
         },
 
-        // addStoredSchool()
-
         deleteStoredSchool({state},id) {
             let scholen = state.scholen;
             let index = scholen.findIndex( e=>e.id==id);
@@ -75,22 +59,16 @@ export default {
             }
         },
 
-
-
-
-
-
-        // loadSchools({commit}) {
-        //     return Api.get( 'https://schoool.nl/_api/scholen' ).then(function(response){
-        //         if (response.data.success) {
-        //             console.log('RESPONSE',response.data);
-        //             commit('_setScholen',response.data.data);
-        //         }
-        //         return Promise.resolve(response);
-        //     }).catch(function(error){
-        //         return Promise.reject(error);
-        //     });
-        // },
+        addStoredSchool({state},school) {
+            if (state.scholen==null) {
+                state.scholen = [];
+            }
+            state.scholen.unshift(school);
+            Storage.set({
+                key:     'scholen',
+                value:    JSON.stringify(state.scholen),
+            });
+        },
 
     },
 }

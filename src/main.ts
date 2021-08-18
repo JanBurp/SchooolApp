@@ -79,8 +79,43 @@ store.dispatch('school/loadSchoolInfo').then(function(){
 
 
 // Register all Ion components globaly
-import {IonApp,IonButtons,IonCard,IonCardContent,IonCardHeader,IonCardTitle,IonCol,IonContent,IonGrid,IonHeader,IonIcon,IonImg,IonInfiniteScroll,IonInfiniteScrollContent,IonItem,IonLabel,IonList,IonMenu,IonMenuButton,IonMenuToggle,IonPage,IonRouterOutlet,IonRow,IonSlide,IonSlides,IonTitle,IonToolbar,} from '@ionic/vue';
+import {
+    IonApp,
+    IonButton,
+    IonButtons,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonCol,
+    IonContent,
+    IonGrid,
+    IonHeader,
+    IonIcon,
+    IonImg,
+    IonInfiniteScroll,
+    IonInfiniteScrollContent,
+    IonInput,
+    IonItem,
+    IonItemOption,
+    IonItemOptions,
+    IonItemSliding,
+    IonLabel,
+    IonList,
+    IonMenu,
+    IonMenuButton,
+    IonMenuToggle,
+    IonPage,
+    IonRouterOutlet,
+    IonRow,
+    IonSlide,
+    IonSlides,
+    IonText,
+    IonTitle,
+    IonToolbar,
+} from '@ionic/vue';
 app.component('ion-app',IonApp);
+app.component('ion-button',IonButton);
 app.component('ion-buttons',IonButtons);
 app.component('ion-card',IonCard);
 app.component('ion-card-content',IonCardContent);
@@ -94,7 +129,11 @@ app.component('ion-icon',IonIcon);
 app.component('ion-img',IonImg);
 app.component('ion-infinite-scroll',IonInfiniteScroll);
 app.component('ion-infinite-scroll-content',IonInfiniteScrollContent);
+app.component('ion-input',IonInput);
 app.component('ion-item',IonItem);
+app.component('ion-item-option',IonItemOption);
+app.component('ion-item-options',IonItemOptions);
+app.component('ion-item-sliding',IonItemSliding);
 app.component('ion-label',IonLabel);
 app.component('ion-list',IonList);
 app.component('ion-menu',IonMenu);
@@ -105,6 +144,7 @@ app.component('ion-router-outlet',IonRouterOutlet);
 app.component('ion-row',IonRow);
 app.component('ion-slide',IonSlide);
 app.component('ion-slides',IonSlides);
+app.component('ion-text',IonText);
 app.component('ion-title',IonTitle);
 app.component('ion-toolbar',IonToolbar);
 
