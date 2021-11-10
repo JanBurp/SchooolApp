@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  import {CONFIG} from '../services/globals.ts';
   export default {
     props : {
       image : Object,
@@ -32,7 +33,7 @@
         return 'imgId'+this.src.replace(/[:/._]/g, "");
       },
       imageAuthorization() {
-        let url = this.src+'?_authorization='+window.token;
+        let url = this.src+'?_authorization='+CONFIG.token;
         return url;
       },
     },

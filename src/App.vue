@@ -24,6 +24,7 @@
 </template>
 
 <script>
+var _ = require('lodash');
 import { defineComponent } from 'vue';
 import { menuController } from '@ionic/vue';
 export default defineComponent({
@@ -50,7 +51,7 @@ export default defineComponent({
     menu() {
       let routes = this.$router.getRoutes();
       routes = routes.filter( r => (r.path!=='/' && !r.meta.hidden) );
-      routes = window._.sortBy(routes,'meta.order');
+      routes = _.sortBy(routes,'meta.order');
 
       let menu = routes.filter( r => !r.meta.is_sub );
       for (var i = 0; i < menu.length; i++) {
