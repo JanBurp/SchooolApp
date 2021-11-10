@@ -4,7 +4,7 @@ const CONFIG = {
     base_url     : 'http://develop_schoool.test',
     api_url      : '',
     kalender_url : '',
-    token        : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InRlc3Rkb2NlbnQiLCJwYXNzd29yZCI6IlRlc3REb2NlbnQxIn0.m-2EKJVppjJsq0lNKWQhvmTssH2fofH5b6dcDze9soQ',
+    token        : '', // test auth token
 };
 CONFIG.api_url      = CONFIG.base_url + '/_api';
 CONFIG.kalender_url = CONFIG.base_url + '/_agenda';
